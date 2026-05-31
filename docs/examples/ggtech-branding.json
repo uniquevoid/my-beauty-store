@@ -1,0 +1,154 @@
+{
+  "companyName": "GGTech Entertainment",
+  "logoUrl": "https://ggtech.gg/apple-icon-180x180.png",
+  "logoAlt": "GGTech Entertainment",
+  "metaDescription": "GGTech Entertainment is a technology company with projects related to the Esports, Video Games and Education industry in Europe, Latin America, Middle East, North Africa and the United States.",
+  "colors": {
+    "primary": "#FF003D",
+    "primaryForeground": "#FFFFFF",
+    "mutedOnPrimary": "rgba(255, 255, 255, 0.85)",
+    "heroOverlay": "linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(255, 0, 61, 0.55) 50%, rgba(0, 0, 0, 0.35) 100%)",
+    "accent": "#C10037",
+    "accentForeground": "#FFFFFF",
+    "highlight": "#C10037",
+    "navLink": "#FFFFFF",
+    "background": "#FFFFFF",
+    "text": "#181818",
+    "footerBackground": "#111111",
+    "footerAccentBorder": "linear-gradient(90deg, #FF003D 0%, #C10037 50%, #FF003D 100%)"
+  },
+  "typography": {
+    "fontFamilySans": "Montserrat, system-ui, sans-serif",
+    "fontFamilyHeading": "Montserrat, system-ui, sans-serif",
+    "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap",
+    "headingStyle": "uppercase"
+  },
+  "theme": {
+    "heroOverlay": "linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(255, 0, 61, 0.55) 50%, rgba(0, 0, 0, 0.35) 100%)",
+    "background": "#FFFFFF",
+    "text": "#181818",
+    "footerBackground": "#111111",
+    "footerAccentBorder": "linear-gradient(90deg, #FF003D 0%, #C10037 50%, #FF003D 100%)",
+    "borderRadius": "9999px"
+  },
+  "components": {
+    "header": {
+      "background": "#111111",
+      "text": "#FFFFFF",
+      "borderColor": "transparent"
+    },
+    "primaryButton": {
+      "background": "#FF003D",
+      "text": "#FFFFFF",
+      "borderRadius": "9999px"
+    },
+    "hero": {
+      "minHeight": "520px"
+    }
+  },
+  "assets": {
+    "heroBackgroundImageUrl": "https://ggtech.gg/ogimage.jpg",
+    "heroVideoUrl": "https://ggtech.gg/assets/hero-BQ-WISNE.mp4",
+    "faviconUrl": "https://ggtech.gg/favicon-96x96.png"
+  },
+  "source": {
+    "url": "https://ggtech.gg/",
+    "extractedAt": "2026-05-28T00:00:00.000Z",
+    "method": "playwright"
+  },
+  "hero": {
+    "badgeText": "We're hiring!",
+    "headline": "Tech, Education & Esports",
+    "subheadline": "GGTech Entertainment is a technology company with projects related to Videogames, Esports and Education.",
+    "backgroundImageUrl": "https://ggtech.gg/ogimage.jpg"
+  },
+  "navLinks": [
+    {
+      "label": "Open Positions",
+      "href": "/jobs"
+    },
+    {
+      "label": "An international leading company in Esports",
+      "href": "/#about"
+    },
+    {
+      "label": "Our partners",
+      "href": "/#customers"
+    }
+  ],
+  "footer": {
+    "copyright": "Copyright © {year} GGTech Entertainment, S.L. All Rights Reserved.",
+    "legalLinks": {
+      "privacyNotice": "https://s3.eu-west-1.amazonaws.com/2023.ggtech.gg/privacy/aviso-legal-y-politica-de-privacidad-ggtech.pdf",
+      "ethics": "https://ggtech.gg/ethic"
+    },
+    "socialLinks": {
+      "linkedin": "https://www.linkedin.com/company/ggtech_es",
+      "youtube": "https://www.youtube.com/@ggtechentertainment"
+    }
+  },
+  "languages": {
+    "default": "en",
+    "options": [
+      {
+        "code": "en",
+        "label": "English"
+      },
+      {
+        "code": "es",
+        "label": "Español"
+      }
+    ]
+  },
+  "landing": {
+    "sections": {
+      "about": true,
+      "customers": true,
+      "technology": false,
+      "coreValues": false,
+      "lifeAt": false,
+      "testimonials": false,
+      "jobAlerts": true
+    },
+    "about": {
+      "heading": "An international leading company in Esports",
+      "body": "We are a multidisciplinar technology company providing tech solutions and developing games. Some of our projects are developed alongside trusted brands such as Amazon, Intel, Riot Games and Tencent.",
+      "stats": [
+        {
+          "value": "+180K",
+          "label": "GAMERGY visitors"
+        },
+        {
+          "value": "+100k",
+          "label": "University students"
+        },
+        {
+          "value": "8+",
+          "label": "Countries with offices"
+        }
+      ],
+      "ctaLabel": "View open positions"
+    },
+    "customers": {
+      "heading": "Our partners",
+      "logos": [
+        {
+          "name": "Red Bull",
+          "imageUrl": "https://ggtech.gg/assets/redbull-DpAnTn7q.png"
+        },
+        {
+          "name": "Disney+",
+          "imageUrl": "https://ggtech.gg/assets/disney-plus-CUXSEEn8.png"
+        },
+        {
+          "name": "Office Depot",
+          "imageUrl": "https://ggtech.gg/assets/office-depot-Dv-NyznM.png"
+        },
+        {
+          "name": "MENATech",
+          "imageUrl": "https://ggtech.gg/assets/menatech-B8AIs4rl.png"
+        }
+      ]
+    }
+  }
+}

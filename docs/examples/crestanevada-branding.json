@@ -1,0 +1,235 @@
+{
+  "companyName": "Crestanevada",
+  "logoUrl": "https://www.crestanevada.es/attachments/web/logos/crestanevada_big.webp",
+  "logoAlt": "Crestanevada — Used and pre-owned cars",
+  "metaDescription": "Join Crestanevada — explore open roles across our automotive retail teams and build a career with impact.",
+  "colors": {
+    "primary": "#FF004C",
+    "primaryForeground": "#FFFFFF",
+    "mutedOnPrimary": "rgba(255, 255, 255, 0.85)",
+    "heroOverlay": "linear-gradient(135deg, rgba(255, 0, 76, 0.88) 0%, rgba(255, 20, 76, 0.65) 50%, rgba(0, 0, 0, 0.25) 100%)",
+    "accent": "#FF0000",
+    "accentForeground": "#FFFFFF",
+    "highlight": "#FF0000",
+    "navLink": "#000000",
+    "background": "#FFFFFF",
+    "text": "#000000",
+    "footerBackground": "#2A2E3D",
+    "footerAccentBorder": "linear-gradient(90deg, #FF004C 0%, #FF0000 50%, #FF004C 100%)",
+    "surface": "#FFE6E6",
+    "surfaceText": "#181818"
+  },
+  "hero": {
+    "badgeText": "We're hiring!",
+    "headline": "Work for a leading used-car dealership brand",
+    "subheadline": "Join Crestanevada — explore open roles across our nationwide dealership network and help deliver trusted automotive experiences every day.",
+    "backgroundImageUrl": "https://www.crestanevada.es/attachments/web/crestanevada_big.png"
+  },
+  "typography": {
+    "fontFamilySans": "Lato, system-ui, sans-serif",
+    "fontFamilyHeading": "Lato, system-ui, sans-serif",
+    "headingStyle": "normal"
+  },
+  "theme": {
+    "heroOverlay": "linear-gradient(135deg, rgba(255, 0, 76, 0.88) 0%, rgba(255, 20, 76, 0.65) 50%, rgba(0, 0, 0, 0.25) 100%)",
+    "background": "#FFFFFF",
+    "text": "#000000",
+    "footerBackground": "#2A2E3D",
+    "footerAccentBorder": "linear-gradient(90deg, #FF004C 0%, #FF0000 50%, #FF004C 100%)",
+    "borderRadius": "0px"
+  },
+  "components": {
+    "header": {
+      "background": "#FFFFFF",
+      "text": "#000000",
+      "borderColor": "#000000"
+    },
+    "primaryButton": {
+      "background": "#FF004C",
+      "text": "#FFFFFF",
+      "borderRadius": "0px"
+    },
+    "hero": {
+      "minHeight": "520px",
+      "overlayOpacity": 1
+    }
+  },
+  "assets": {
+    "heroBackgroundImageUrl": "https://www.crestanevada.es/attachments/web/crestanevada_big.png",
+    "faviconUrl": "https://www.crestanevada.es/attachments/web/fav.ico/apple-touch-icon.png",
+    "marketingPhotoUrls": [
+      "https://cdn.crestanevada.es/vehiculos/img/48226/nissan-x-trail-5pl-15-epower-206cv-4x2-at-nconnecta-con-65315-km-206-cv-hibrido-automatico_i44635.webp",
+      "https://cdn.crestanevada.es/vehiculos/img/48225/seat-arona-10-tgi-66kw-reference-edition-con-119673-km-90-cv-gas-manual_i90866.webp",
+      "https://cdn.crestanevada.es/vehiculos/img/48180/audi-a1-sportback-advanced-30-tfsi-110cv-s-tronic-con-56570-km-110-cv-gasolina-automatico_i45671.webp",
+      "https://cdn.crestanevada.es/vehiculos/img/47910/skoda-rapid-14-tdi-cr-90cv-style-con-89408-km-90-cv-diesel-manual_i98669.webp",
+      "https://cdn.crestanevada.es/blogs/461/9a4ebd8c15daeaf2798941487.webp",
+      "https://cdn.crestanevada.es/blogs/460/48d4167a0f3bc10686a1ad20a.webp",
+      "https://cdn.crestanevada.es/blogs/458/20877befbd58c865e224346e6.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/2/737067214871a5da0a5aa4c17.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/4/a896144046a1b5bd6e3e034d0.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/20/1e632c3db5602c1e263989798.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/28/56d326d8139f904b679084778.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/26/12fe0da8cf48c75fb194e0d02.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/16/73b973e8cb788aaacc0d76892.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/17/6a00ac1e69471049e71eb82cb.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/18/c04c93a41c414f2801d74c3d5.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/30/16a4d8f9442ec82c5d390079c.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/36/9424aa849c54613a0086d9003.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/9/4625d8e31dad7d1c4c83399a6.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/15/adc3548f154308c3f8ece5ab7.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/24/66d354783dd45cbc1bbc54d41.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/6/238f12faae477497ff945ea4c.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/23/26c236095f0e9fc4a4e0af7ed.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/32/b23875a22c4fcfebc11826fe5.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/27/8dc3c265ec144154a76677466.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/10/86ce53990daffe15ddd6f30a4.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/25/983e9d76e1db559f224d6ab1f.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/19/b169fffe8580bb2a4e736bf92.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/34/c305a250710e95cf6bad18c18.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/11/9db597035f77a6c1167e05ca9.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/37/c33078fd40166c45306e479b1.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/38/40203b20a6933a14a086bcc0c.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/29/286b0b3ea509af1aeff6bb472.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/14/850db2caf69f07f8ba425a9c3.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/13/8599154eb363835d2b5a661b4.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/31/d6b6536a9a9352f17189a9dff.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/21/0d346bf6310fdff1302c9d01f.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/5/5d273677652ec19562d9db111.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/7/b1a3f5837d7acb688b1c1980c.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/33/b1c22aa948ce507e6fd42ccb0.webp",
+      "https://www.crestanevada.es/attachments/sedesweb/35/b8a21be2bf50bad0b9dbfc9d5.webp",
+      "https://www.crestanevada.es/attachments/web/imagenes/ubicaciones_cresta.webp?1.2",
+      "https://www.crestanevada.es/attachments/web/rrss/google_log.webp",
+      "https://www.crestanevada.es/attachments/web/rrss/facebook-log.webp",
+      "https://www.crestanevada.es/attachments/web/rrss/ekomi.webp",
+      "https://www.crestanevada.es/attachments/web/sellos/financiacion_medida.webp?0.32",
+      "https://www.crestanevada.es/attachments/web/etiquetas/etiqueta_eco.png",
+      "https://www.crestanevada.es/attachments/web/etiquetas/etiqueta_c.png",
+      "https://www.crestanevada.es/attachments/perfil_usuario/4049/7cb7550aeced4811d5807ecc6.png",
+      "https://www.crestanevada.es/attachments/web/sellos/2_meses_prueba.webp?0.32",
+      "https://www.crestanevada.es/attachments/web/sellos/felicidad_serie2.png?1.6",
+      "https://www.crestanevada.es/attachments/web/coches/pequenio_red.webp?1.4",
+      "https://www.crestanevada.es/attachments/web/coches/mediano_red.webp?1.4",
+      "https://www.crestanevada.es/attachments/web/coches/berlina_red.webp?1.4",
+      "https://www.crestanevada.es/attachments/web/coches/familiar_red.webp?1.4",
+      "https://www.crestanevada.es/attachments/web/coches/suv_red.webp?1.4",
+      "https://www.crestanevada.es/attachments/web/coches/monovolumen_red.webp?1.4",
+      "https://www.crestanevada.es/attachments/web/coches/comercial_red.webp?1.4",
+      "https://www.crestanevada.es/attachments/web/coches/moto_red.webp?1.4",
+      "https://www.crestanevada.es/attachments/web/rrss/valoracoones-google.webp"
+    ]
+  },
+  "source": {
+    "url": "https://www.crestanevada.es/",
+    "extractedAt": "2026-05-31T09:13:19.371Z",
+    "method": "playwright"
+  },
+  "landing": {
+    "sections": {
+      "about": true,
+      "customers": true,
+      "technology": false,
+      "coreValues": false,
+      "lifeAt": false,
+      "testimonials": false,
+      "jobAlerts": true
+    },
+    "about": {
+      "heading": "About us",
+      "body": "At Crestanevada, we help drivers find the right vehicle with confidence — and we are always looking for talented people to join our teams.\n\nWith 30+ locations across Spain, flexible career paths, and a culture built around customer happiness, Crestanevada is a place where you can build a rewarding career in automotive retail.",
+      "stats": [
+        {
+          "value": "4.8",
+          "label": "Google reviews"
+        },
+        {
+          "value": "4,215+",
+          "label": "Customer ratings"
+        },
+        {
+          "value": "30+",
+          "label": "Dealership locations"
+        }
+      ],
+      "ctaLabel": "View open positions"
+    },
+    "customers": {
+      "heading": "Our partners",
+      "logos": [
+        {
+          "name": "Opiniones en google.",
+          "imageUrl": "https://www.crestanevada.es/attachments/web/rrss/google_log.webp"
+        },
+        {
+          "name": "Valoraciones Google",
+          "imageUrl": "https://www.crestanevada.es/attachments/web/rrss/valoracoones-google.webp"
+        },
+        {
+          "name": "Opiniones en Facebook",
+          "imageUrl": "https://www.crestanevada.es/attachments/web/rrss/facebook-log.webp"
+        },
+        {
+          "name": "Valoraciones Facebook",
+          "imageUrl": "https://www.crestanevada.es/attachments/web/rrss/valoracoones-google.webp"
+        },
+        {
+          "name": "Opiniones en ekomi",
+          "imageUrl": "https://www.crestanevada.es/attachments/web/rrss/ekomi.webp"
+        },
+        {
+          "name": "Valoraciones Ekomi",
+          "imageUrl": "https://www.crestanevada.es/attachments/web/rrss/valoracoones-google.webp"
+        }
+      ]
+    },
+    "jobAlerts": {
+      "headingLead": "Let's stay",
+      "headingTrail": "connected",
+      "body": [
+        "Crestanevada is growing across Spain — new dealerships, new teams, and new roles open regularly.",
+        "Create a tailored job alert and we'll notify you as soon as your dream role is available."
+      ],
+      "ctaLabel": "Create Job Alert",
+      "imageUrl": "https://cdn.crestanevada.es/vehiculos/img/48226/nissan-x-trail-5pl-15-epower-206cv-4x2-at-nconnecta-con-65315-km-206-cv-hibrido-automatico_i44635.webp",
+      "background": "#FFE6E6"
+    }
+  },
+  "languages": {
+    "default": "en",
+    "options": [
+      {
+        "code": "en",
+        "label": "English"
+      }
+    ]
+  },
+  "navLinks": [
+    {
+      "label": "Open Positions",
+      "href": "/jobs"
+    },
+    {
+      "label": "About us",
+      "href": "/#about"
+    },
+    {
+      "label": "Our partners",
+      "href": "/#customers"
+    }
+  ],
+  "footer": {
+    "copyright": "Copyright © {year} Crestanevada. All Rights Reserved.",
+    "legalLinks": {
+      "privacyNotice": "https://www.crestanevada.es/politica-privacidad",
+      "cookieNotice": "https://www.crestanevada.es/politica-cookies",
+      "legal": "https://www.crestanevada.es/attachments/web/bases_legales_sorteos.pdf?1.1"
+    },
+    "socialLinks": {
+      "instagram": "https://www.instagram.com/crestanevada/",
+      "facebook": "https://www.facebook.com/Crestanevada.vehiculos.ocasion",
+      "youtube": "https://www.youtube.com/channel/UCpIrVwj1c-PRJL2lTJXVdJQ",
+      "twitter": "https://twitter.com/crestanevada",
+      "linkedin": "https://www.linkedin.com/company/crestanevada-s-l-/"
+    }
+  }
+}

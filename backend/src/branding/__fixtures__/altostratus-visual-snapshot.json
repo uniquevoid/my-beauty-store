@@ -1,0 +1,35 @@
+{
+  "sourceUrl": "https://www.altostratus.es/",
+  "companyName": "Altostratus",
+  "metaDescription": "Impulsa tu transformación digital con soluciones personalizadas en cloud, IA y datos.",
+  "logoUrl": "https://static.altostratus.es/2025/12/Logo-Altostratus.svg",
+  "heroBackgroundImageUrl": "https://static.altostratus.es/2024/11/Ai-Computing.svg",
+  "heroHeadline": "Tu transformación digital comienza aquí",
+  "cssColors": ["#FF6900", "#FCB900", "#021E5F", "#FFFFFF", "#333333", "#0B1A33"],
+  "themeColor": null,
+  "body": {
+    "background": "rgb(255, 255, 255)",
+    "color": "rgb(51, 51, 51)",
+    "fontFamily": "system-ui, sans-serif"
+  },
+  "header": {
+    "background": "rgb(255, 255, 255)",
+    "color": "rgb(51, 51, 51)",
+    "borderColor": "rgb(51, 51, 51)"
+  },
+  "footer": {
+    "background": "rgb(11, 26, 51)",
+    "color": "rgb(255, 255, 255)"
+  },
+  "primaryButton": {
+    "background": "rgb(233, 30, 140)",
+    "color": "rgb(255, 255, 255)",
+    "borderRadius": "10px"
+  },
+  "hero": {
+    "backgroundImage": "none",
+    "textTransform": "none"
+  },
+  "h1Text": "Tu transformación digital comienza aquí",
+  "h1Color": "rgb(0, 174, 239)"
+}

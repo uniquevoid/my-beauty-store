@@ -1,0 +1,136 @@
+{
+  "companyName": "Universal DX",
+  "logoUrl": "https://cdn.prod.website-files.com/60925e59116a323839bdf90a/609260498f0c54962e2958e8_Logo.png",
+  "logoAlt": "Universal DX",
+  "metaDescription": "Join Universal DX — explore open roles across our growing organization teams and build a career with impact.",
+  "colors": {
+    "primary": "#A58F8F",
+    "primaryForeground": "#FFFFFF",
+    "mutedOnPrimary": "rgba(255, 255, 255, 0.85)",
+    "heroOverlay": "linear-gradient(135deg, rgba(0, 0, 0, 0.65) 0%, rgba(165, 143, 143, 0.4) 50%, rgba(0, 0, 0, 0.55) 100%)",
+    "accent": "#F6B98F",
+    "accentForeground": "#181818",
+    "highlight": "#F6B98F",
+    "navLink": "#1F191A",
+    "background": "#FFFFFF",
+    "text": "#1F191A",
+    "footerBackground": "#1F191A",
+    "footerAccentBorder": "linear-gradient(90deg, #FFDEDE 0%, #F6B98F 50%, #FFDEDE 100%)",
+    "surface": "#FFFFFF",
+    "surfaceText": "#181818",
+    "heroTextForeground": "#FFFFFF"
+  },
+  "hero": {
+    "badgeText": "We're hiring!",
+    "headline": "Build your career at Universal DX",
+    "subheadline": "Join Universal DX — explore open roles across teams and locations and grow with people who care about doing great work.",
+    "backgroundImageUrl": "https://cdn.prod.website-files.com/60925e59116a323839bdf90a/60f534dad9d8842b1570da03_UniversalDX-Metadatos.png"
+  },
+  "typography": {
+    "fontFamilySans": "Space Grotesk, system-ui, sans-serif",
+    "fontFamilyHeading": "Space Grotesk, system-ui, sans-serif",
+    "googleFontsUrl": "https://fonts.googleapis.com/",
+    "headingStyle": "normal"
+  },
+  "theme": {
+    "heroOverlay": "linear-gradient(135deg, rgba(0, 0, 0, 0.65) 0%, rgba(165, 143, 143, 0.4) 50%, rgba(0, 0, 0, 0.55) 100%)",
+    "background": "#FFFFFF",
+    "text": "#1F191A",
+    "footerBackground": "#1F191A",
+    "footerAccentBorder": "linear-gradient(90deg, #FFDEDE 0%, #F6B98F 50%, #FFDEDE 100%)",
+    "borderRadius": "0px"
+  },
+  "components": {
+    "header": {
+      "background": "#FFFFFF",
+      "text": "#1F191A",
+      "borderColor": "#1F191A"
+    },
+    "primaryButton": {
+      "background": "#FFDEDE",
+      "text": "#181818",
+      "borderRadius": "0px"
+    },
+    "hero": {
+      "minHeight": "520px",
+      "overlayOpacity": 1
+    }
+  },
+  "assets": {
+    "heroBackgroundImageUrl": "https://cdn.prod.website-files.com/60925e59116a323839bdf90a/60f534dad9d8842b1570da03_UniversalDX-Metadatos.png",
+    "faviconUrl": "https://cdn.prod.website-files.com/60925e59116a323839bdf90a/60a7a61286b081482f957ac8_Favicon%20-%20256.png",
+    "marketingPhotoUrls": []
+  },
+  "source": {
+    "url": "https://www.universaldx.com/",
+    "extractedAt": "2026-05-31T10:01:02.590Z",
+    "method": "playwright"
+  },
+  "landing": {
+    "sections": {
+      "about": false,
+      "customers": false,
+      "technology": false,
+      "coreValues": false,
+      "lifeAt": false,
+      "testimonials": false,
+      "cultureSpotlight": true,
+      "jobAlerts": true
+    },
+    "about": {
+      "heading": "About us",
+      "body": "Universal DX is a growing organization with opportunities across multiple teams and locations.\n\nExplore open roles, develop new skills, and build a career with people who value collaboration and impact.",
+      "stats": [],
+      "ctaLabel": "View open positions"
+    },
+    "cultureSpotlight": {
+      "heading": "Life at Universal DX",
+      "body": "Curious what it's like to work at Universal DX? Read how our team members describe their experience, culture, and growth.",
+      "ctaLabel": "Read the story",
+      "articleUrl": "https://www.universaldx.com/careers",
+      "articleTitle": "Careers",
+      "imageUrl": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
+    },
+    "jobAlerts": {
+      "headingLead": "Let's stay",
+      "headingTrail": "connected",
+      "body": [
+        "Universal DX is growing — new teams and locations mean new opportunities for talented people.",
+        "Create a tailored job alert and we'll let you know when your next role is ready."
+      ],
+      "ctaLabel": "Create Job Alert",
+      "imageUrl": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80",
+      "background": "#FFFFFF"
+    }
+  },
+  "languages": {
+    "default": "en",
+    "options": [
+      {
+        "code": "en",
+        "label": "English"
+      }
+    ]
+  },
+  "navLinks": [
+    {
+      "label": "Open Positions",
+      "href": "/jobs"
+    },
+    {
+      "label": "Team stories",
+      "href": "/#culture-spotlight"
+    },
+    {
+      "label": "Job alerts",
+      "href": "/#job-alerts"
+    }
+  ],
+  "footer": {
+    "copyright": "Copyright © {year} Universal DX — A future where cancer is curable. All Rights Reserved.",
+    "legalLinks": {
+      "privacyNotice": "https://www.universaldx.com/privacy-policy"
+    },
+    "socialLinks": {}
+  }
+}

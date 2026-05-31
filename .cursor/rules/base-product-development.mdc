@@ -1,0 +1,28 @@
+---
+description: Base product development — career site platform, AI features, core UX (not prospect demos)
+globs: frontend/**,backend/src/**
+alwaysApply: false
+---
+
+# Base product development
+
+Use this context when improving the **reusable career site product**, not a one-off prospect demo.
+
+## In scope
+
+- Candidate experience: job search, applications, resume upload, job alerts
+- AI features: recruiter chatbot, skills parsing, resume matching
+- Admin, ATS integrations, performance, accessibility
+- Shared UI components and API in `frontend/src/` and `backend/src/careers/`
+
+## Out of scope (unless user explicitly bridges both)
+
+- Do **not** run `demo-from-website` or `create-prospect-from-url`
+- Do **not** edit `docs/examples/*-branding.json` or provision Supabase prospect tenants
+- Do **not** call `ensure-outreach-production` for outreach
+
+## Reference
+
+Canonical strategy: `docs/NORTH_STAR.md`
+
+For prospect demos, follow `work-context-routing.mdc` → `prospect-visual-brand-parity.mdc`.

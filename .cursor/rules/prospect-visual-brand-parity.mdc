@@ -1,0 +1,52 @@
+---
+description: Mandatory visual brand parity when creating or updating prospect demo tenants
+globs: backend/scripts/create-prospect-from-url.ts, backend/src/branding/**, docs/examples/*-branding.json, docs/PROSPECT_DEMO.md
+alwaysApply: true
+---
+
+# Prospect visual brand parity (mandatory)
+
+Every **new or updated** prospect demo must feel like the company's website (fonts, colors, hero media, header/footer, button styles) — not the generic Careers template.
+
+## Required workflow
+
+1. **Extract** from company URL via Playwright (default in `create-prospect-from-url`):
+   ```powershell
+   cd backend
+   npm run create-prospect-from-url -- --url https://company.com --slug company --dry-run
+   ```
+2. **Pass validation** — `validateVisualBrandParity` runs before provision. Fix errors or use `--force` only in emergencies.
+3. **Sync production** — `ensure-outreach-production` after branding updates (see `prospect-outreach-production.mdc`).
+4. **Verify in incognito** — `{APP_PUBLIC_URL}/?tenant={slug}`: company font, logo, hero image, header/CTA colors, readable body text on dark backgrounds, visible secondary CTAs, job-alerts section image from company site.
+
+## Branding JSON must include
+
+- `logoUrl`, full `colors` (primary, background, text, surface, surfaceText, heroOverlay, footer)
+- `typography.fontFamilySans` (+ `googleFontsUrl` when applicable)
+- `theme.heroOverlay`, `components.header`, `components.primaryButton`
+- `hero.headline` and `hero.backgroundImageUrl` from the company site (not Unsplash / generic copy)
+- `landing.jobAlerts.imageUrl` from careers/hero imagery when available (not the generic SVG fallback)
+- Accessible contrast: `colors.text` vs background, `navLink` vs header bg, non-neutral `colors.primary`, readable **hero headline** on light hero images (`colors.heroTextForeground` + dark `heroOverlay` on light sites)
+- **Careers UI copy in English only** (nav, headings, hero, bodies, job alerts) — translate scraped non-English text via Gemini when `GEMINI_API_KEY` is set; `languages.default` = `en`
+- `navLinks` — **minimum 3 items** (Open Positions + 2 section anchors); labels **≤ 3 words** in English (never the hero `h1` as nav text)
+- When partners/testimonials/culture blocks are missing, enable `landing.cultureSpotlight` with external link to employee blog/story or corporate careers/contact page
+- `landing.technology.imageUrl` and `landing.jobAlerts.imageUrl` must be raster marketing photos from the site (not `/icons/*.svg` or hero SVG duplicates); when the site pool is empty, use distinct **career/HR/wellbeing stock photos** per section — never the generic SVG illustration fallback
+- `colors.primary` from **hero/main CTA** computed styles, not highest-saturation CSS hex alone; accent from headline/link blues when distinct
+- `landing.customers`, `landing.coreValues`, `landing.testimonials`, `landing.about.stats` populated when present on the corporate site (Spanish sections included)
+- `footer.socialLinks` and `footer.legalLinks` from the company site (no `example.com` placeholders)
+- `languages` with English default plus one language detected from the corporate site
+- `source.method: "playwright"` when extracted from URL
+
+## Do not
+
+- Ship demos with only `colors.primary` and a logo — incomplete extraction.
+- Skip Playwright without `--force` when provisioning from URL.
+- Edit `docs/examples/*-branding.json` without re-running `--update` to Supabase.
+
+## One-time setup
+
+```powershell
+cd backend
+npm install
+npx playwright install chromium
+```

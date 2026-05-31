@@ -1,0 +1,18 @@
+---
+description: Route work between base product development and prospect outreach/customization
+alwaysApply: true
+---
+
+# Work context routing
+
+Determine which context applies before making changes:
+
+| User intent | Context | Key paths |
+|-------------|---------|-----------|
+| Base product, platform features, AI chatbot, resume matching, ATS integration, admin, candidate UX | **Base product** | `frontend/src/`, `backend/src/careers/`, core API — see `base-product-development.mdc` |
+| `/newcustomer`, `/iterate-customer`, prospect demo, outreach, branding extraction, white-label demo | **Prospect outreach** | `backend/src/branding/`, `docs/examples/*-branding.json`, `.cursor/commands/newcustomer.md` |
+| Visual parity, production deploy for demos | **Prospect outreach** | `prospect-visual-brand-parity.mdc`, `prospect-outreach-production.mdc` |
+
+When ambiguous, ask once: **"Are we improving the base product or customizing a prospect demo?"**
+
+Do not run `demo-from-website` or edit prospect branding JSON during base product work. Do not refactor core product features during prospect outreach unless the user asks.

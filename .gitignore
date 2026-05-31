@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+coverage/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Vercel local link
+frontend/.vercel/
+
+# Local outreach runtime
+backend/.outreach-api-url
+backend/.render-keepalive.log
+backend/.outreach-bootstrap.log
+backend/supabase/
+
+# Logs and temp
+*.log
+.temp/
+.tmp/
+.playwright-mcp/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

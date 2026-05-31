@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+:root {
+  --brand-primary: #0066CC;
+  --brand-primary-foreground: #FFFFFF;
+  --brand-muted-on-primary: rgba(255, 255, 255, 0.85);
+  --brand-hero-overlay: linear-gradient(135deg, rgba(0, 40, 100, 0.92) 0%, rgba(0, 80, 160, 0.75) 50%, rgba(0, 102, 204, 0.4) 100%);
+  --brand-accent: #FFD100;
+  --brand-accent-foreground: #1A1A1A;
+  --brand-nav-link: #0066CC;
+  --brand-highlight: #E91E8C;
+  --brand-background: #FAF7F2;
+  --brand-text: #2B2B2B;
+  --brand-footer-background: #0B1A33;
+  --brand-footer-accent-border: linear-gradient(90deg, #0066CC 0%, #7B2FBE 50%, #E91E8C 100%);
+  --brand-font-sans: system-ui, sans-serif;
+  --brand-font-heading: system-ui, sans-serif;
+  --brand-header-bg: #ffffff;
+  --brand-header-text: #2b2b2b;
+  --brand-header-border: #f3f4f6;
+  --brand-btn-bg: var(--brand-primary);
+  --brand-btn-text: var(--brand-primary-foreground);
+  --brand-btn-radius: 9999px;
+  --brand-radius: 9999px;
+}
+
+body {
+  font-family: var(--brand-font-sans);
+  color: var(--brand-text);
+  background-color: var(--brand-background);
+}

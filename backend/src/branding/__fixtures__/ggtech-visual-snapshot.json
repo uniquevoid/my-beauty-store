@@ -1,0 +1,37 @@
+{
+  "sourceUrl": "https://ggtech.gg/",
+  "companyName": "GGTech Entertainment",
+  "metaDescription": "GGTech Entertainment is a technology company with projects related to the Esports, Video Games and Education industry.",
+  "logoUrl": "https://ggtech.gg/apple-icon-180x180.png",
+  "faviconUrl": "https://ggtech.gg/favicon-96x96.png",
+  "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap",
+  "heroBackgroundImageUrl": "https://ggtech.gg/ogimage.jpg",
+  "heroHeadline": "Tech, Education & Esports",
+  "heroSubheadline": "GGTech Entertainment is a technology company with projects related to Videogames, Esports and Education.",
+  "cssColors": ["#FF003D", "#C10037", "#181818", "#FFFFFF", "#111111"],
+  "themeColor": "#FF003D",
+  "body": {
+    "background": "rgb(255, 255, 255)",
+    "color": "rgb(24, 24, 24)",
+    "fontFamily": "Montserrat, sans-serif"
+  },
+  "header": {
+    "background": "rgb(17, 17, 17)",
+    "color": "rgb(255, 255, 255)",
+    "borderColor": "transparent"
+  },
+  "footer": {
+    "background": "rgb(17, 17, 17)",
+    "color": "rgb(255, 255, 255)"
+  },
+  "primaryButton": {
+    "background": "rgb(255, 0, 61)",
+    "color": "rgb(255, 255, 255)",
+    "borderRadius": "9999px"
+  },
+  "hero": {
+    "backgroundImage": "none",
+    "textTransform": "uppercase"
+  },
+  "h1Text": "Tech, Education & Esports"
+}

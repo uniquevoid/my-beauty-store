@@ -1,0 +1,154 @@
+{
+  "companyName": "Noetic™",
+  "logoUrl": "https://framerusercontent.com/assets/paaSfMkwR4Yx8lMWtUwJ1nTJU.svg",
+  "logoAlt": "Noetic™",
+  "metaDescription": "Join Noetic™ — explore open roles across our growing organization teams and build a career with impact.",
+  "colors": {
+    "primary": "#FA6F45",
+    "primaryForeground": "#181818",
+    "mutedOnPrimary": "rgba(24, 24, 24, 0.75)",
+    "heroOverlay": "linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(250, 111, 69, 0.55) 50%, rgba(0, 0, 0, 0.35) 100%)",
+    "accent": "#0099FF",
+    "accentForeground": "#181818",
+    "highlight": "#0099FF",
+    "navLink": "#FFFFFF",
+    "background": "#161719",
+    "text": "#FFFFFF",
+    "footerBackground": "#212225",
+    "footerAccentBorder": "linear-gradient(90deg, #FA6F45 0%, #0099FF 50%, #FA6F45 100%)",
+    "surface": "#F4F4F5",
+    "surfaceText": "#181818",
+    "heroTextForeground": "#FFFFFF"
+  },
+  "hero": {
+    "badgeText": "We're hiring!",
+    "headline": "Build your career at Noetic™",
+    "subheadline": "Join Noetic™ — explore open roles across teams and locations and grow with people who care about doing great work.",
+    "backgroundImageUrl": "https://framerusercontent.com/assets/A08nvHVawn9T6t8SIo22kPV7Vs.png"
+  },
+  "typography": {
+    "fontFamilySans": "sans-serif, system-ui, sans-serif",
+    "fontFamilyHeading": "sans-serif, system-ui, sans-serif",
+    "headingStyle": "normal"
+  },
+  "theme": {
+    "heroOverlay": "linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(250, 111, 69, 0.55) 50%, rgba(0, 0, 0, 0.35) 100%)",
+    "background": "#161719",
+    "text": "#FFFFFF",
+    "footerBackground": "#212225",
+    "footerAccentBorder": "linear-gradient(90deg, #FA6F45 0%, #0099FF 50%, #FA6F45 100%)",
+    "borderRadius": "0px"
+  },
+  "components": {
+    "header": {
+      "background": "#161719",
+      "text": "#FFFFFF",
+      "borderColor": "#000000"
+    },
+    "primaryButton": {
+      "background": "#DFD9D7",
+      "text": "#181818",
+      "borderRadius": "0px"
+    },
+    "hero": {
+      "minHeight": "520px",
+      "overlayOpacity": 1
+    }
+  },
+  "assets": {
+    "heroBackgroundImageUrl": "https://framerusercontent.com/assets/A08nvHVawn9T6t8SIo22kPV7Vs.png",
+    "heroVideoUrl": "https://framerusercontent.com/assets/7cfKwwJbdvTH5qlQZF3Yfixo.mp4",
+    "faviconUrl": "https://framerusercontent.com/images/5qODYAiPqhza2TneBmHoADOmSw.png",
+    "marketingPhotoUrls": [
+      "https://framerusercontent.com/images/klui2LLRQBdbyFubR7YMjvGySA.jpg?width=2400&height=1350",
+      "https://framerusercontent.com/images/pZdX5DSLgcDIuo8Kwf0r7qayGs.jpeg?width=2048&height=2048",
+      "https://framerusercontent.com/images/w7nhcRExTJ3oCv0uyhQMsjYs.jpg?width=2225&height=1174",
+      "https://framerusercontent.com/images/bKJaAwV3yZSOL1RpbNbCYgYrDE.jpg?width=4284&height=5712",
+      "https://framerusercontent.com/images/rNSV4ZdeoyGICvCDmJ7mAuVN3G0.png?width=1232&height=928",
+      "https://framerusercontent.com/images/yoT89Dn8GhMoZ9BvJh5HYWR5Tc.png?width=1232&height=928",
+      "https://framerusercontent.com/images/ynsWe8gAMykkx62PPDvCmo2nPQ.png?width=1232&height=928",
+      "https://framerusercontent.com/images/uJyg6P1wJynZugQZ0wveOfdQRjo.png?width=1232&height=928",
+      "https://framerusercontent.com/images/er9E7hBe92UF0I3e9tq9nmG3EU.png?width=1232&height=928",
+      "https://framerusercontent.com/images/13aJaietr3gKDYCWOxnq5ddTek.png?width=1232&height=928",
+      "https://framerusercontent.com/images/HUTNmJWqemkoK2mGn9FOs51dIs.png?width=1232&height=928",
+      "https://framerusercontent.com/images/ZoPvyfEKfKX2xMaYIwfadrcAC8.png?width=1232&height=928",
+      "https://framerusercontent.com/images/m3DZgOllNiSXsuevEIAAlFUZYM.png?width=1232&height=928",
+      "https://framerusercontent.com/images/rOjeXFoLFHWpbG47ol06cOgInX4.png?width=341&height=490",
+      "https://framerusercontent.com/images/WBNHQyY8J4VnJivX2KGBk1vcWy0.png?width=341&height=490",
+      "https://framerusercontent.com/images/XrROt7ePLVYTA2bqWX31g6i7hlk.png?width=341&height=490",
+      "https://framerusercontent.com/images/g1V8zoIwT9XswitCbEoEXSqHDi8.png?width=341&height=490",
+      "https://framerusercontent.com/images/vjWuFn5ijGhW3JycgaGgTTgG0wU.png?width=341&height=490",
+      "https://framerusercontent.com/images/gjxzcV7XPg0sAIUR8RvgVEbby8.png?width=341&height=490"
+    ]
+  },
+  "source": {
+    "url": "https://noetic.net/",
+    "extractedAt": "2026-05-31T10:02:24.806Z",
+    "method": "playwright"
+  },
+  "landing": {
+    "sections": {
+      "about": true,
+      "customers": false,
+      "technology": false,
+      "coreValues": false,
+      "lifeAt": false,
+      "testimonials": false,
+      "cultureSpotlight": true,
+      "jobAlerts": true
+    },
+    "about": {
+      "heading": "About us",
+      "body": "Noetic™ is a growing organization with opportunities across multiple teams and locations.\n\nExplore open roles, develop new skills, and build a career with people who value collaboration and impact.",
+      "stats": [],
+      "ctaLabel": "View open positions"
+    },
+    "cultureSpotlight": {
+      "heading": "Life at Noetic™",
+      "body": "Curious what it's like to work at Noetic™? Read how our team members describe their experience, culture, and growth.",
+      "ctaLabel": "Read the story",
+      "articleUrl": "https://noetic.net/",
+      "articleTitle": "Meet The TeamMeet The TeamMeet The Team",
+      "imageUrl": "https://framerusercontent.com/images/pZdX5DSLgcDIuo8Kwf0r7qayGs.jpeg?width=2048&height=2048"
+    },
+    "jobAlerts": {
+      "headingLead": "Let's stay",
+      "headingTrail": "connected",
+      "body": [
+        "Noetic™ is growing — new teams and locations mean new opportunities for talented people.",
+        "Create a tailored job alert and we'll let you know when your next role is ready."
+      ],
+      "ctaLabel": "Create Job Alert",
+      "imageUrl": "https://framerusercontent.com/images/klui2LLRQBdbyFubR7YMjvGySA.jpg?width=2400&height=1350",
+      "background": "#F4F4F5"
+    }
+  },
+  "languages": {
+    "default": "en",
+    "options": [
+      {
+        "code": "en",
+        "label": "English"
+      }
+    ]
+  },
+  "navLinks": [
+    {
+      "label": "Open Positions",
+      "href": "/jobs"
+    },
+    {
+      "label": "About us",
+      "href": "/#about"
+    },
+    {
+      "label": "Team stories",
+      "href": "/#culture-spotlight"
+    }
+  ],
+  "footer": {
+    "copyright": "Copyright © {year} Noetic™ — Redefining Trusted Global Communications. All Rights Reserved.",
+    "legalLinks": {},
+    "socialLinks": {}
+  }
+}

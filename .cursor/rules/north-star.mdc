@@ -1,0 +1,42 @@
+---
+description: Product north star — vision, sales demo engine, AI features, and engineering priorities
+alwaysApply: true
+---
+
+# Product North Star — AI-Powered Career Sites
+
+Canonical doc: `docs/NORTH_STAR.md`. Keep this rule in sync when strategy changes.
+
+## 1. Executive Summary & Vision
+
+The mission is to bridge the gap between archaic legacy Applicant Tracking Systems (ATS) and the modern, high-converting talent acquisition experiences expected by top-tier candidates today. Most mid-market and enterprise organizations are locked into legacy ATS platforms that deliver poor, unoptimized frontend experiences. We provide a decoupled, AI-powered, high-conversion career site layer that sits on top of any legacy infrastructure.
+
+**Core value proposition:**
+
+- **Candidates:** Hyper-personalized, AI-guided job search and application experience.
+- **Customers:** Increased conversion from visitor to applicant and modern branding without replacing core HR infrastructure.
+- **Sales engine:** Zero-friction, automated visual hook using bespoke, production-grade visual demos.
+
+## 2. Sales Engine — Autonomous Tailored Demo Engine
+
+Outbound differentiator: fully white-labeled demos that mimic the prospect's brand identity and visual language.
+
+**Extraction & demo flow:**
+
+- **Visual assets (Playwright):** Headless worker extracts logos, favicons, imagery, hero graphics from the corporate site.
+- **Design tokens:** Computed styles → primary, secondary, accent colors and typography.
+- **Culture & values:** AI parses mission statements and culture pillars from site copy.
+- **Jobs:** Do not scrape live jobs; populate UI with 10 sample jobs from the base product.
+
+## 3. Key AI Features
+
+- **AI Recruiter Chatbot:** Guide candidates and answer company-specific culture questions.
+- **Skills parsing & resume matching:** Resume upload → skills → instant recommendations against the sample job pool.
+- **Personalized alerts (simulated recruiter):** Alerts that feel like a recruiter reaching out, not generic automation.
+
+## 4. Engineering Priorities (this repo)
+
+- **Visual extraction fidelity:** Mirror prospect look-and-feel accurately in demos (`backend/src/branding/`, Playwright extraction scripts).
+- **Modular visual theming:** Layout vs theme separation; components consume dynamic design tokens (`BrandingProvider`, tenant `branding_json`).
+- **Performance & accessibility:** Public UI must be fast and WCAG compliant.
+- **Decoupled data layer:** UI independent of data source (`frontend/src/api/`); support mock/demo data and future ATS integrations without component rewrites.

@@ -1,0 +1,111 @@
+{
+  "companyName": "Viva Games Studios",
+  "logoUrl": "https://www.vivastudios.com/wp-content/uploads/2025/06/Viva-Games-Studios-1.svg",
+  "logoAlt": "Viva Games Studios",
+  "metaDescription": "Join Viva Games Studios — Careers Viva Games Studios: Explore open roles and join a creative, global team passionate about mobile gaming. Let's grow together.",
+  "colors": {
+    "primary": "#FF6900",
+    "primaryForeground": "#181818",
+    "mutedOnPrimary": "rgba(24, 24, 24, 0.75)",
+    "heroOverlay": "linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(255, 105, 0, 0.55) 50%, rgba(0, 0, 0, 0.35) 100%)",
+    "accent": "#FCB900",
+    "accentForeground": "#181818",
+    "highlight": "#FCB900",
+    "navLink": "#FFFFFF",
+    "background": "#0B0124",
+    "text": "#FFFFFF",
+    "footerBackground": "#0B1A33",
+    "footerAccentBorder": "linear-gradient(90deg, #FF6900 0%, #FCB900 50%, #FF6900 100%)",
+    "surface": "#F4F4F5",
+    "surfaceText": "#181818"
+  },
+  "hero": {
+    "badgeText": "We're hiring!",
+    "headline": "Careers at Viva Studios",
+    "subheadline": "Careers Viva Games Studios: Explore open roles and join a creative, global team passionate about mobile gaming. Let's grow together.",
+    "backgroundImageUrl": "https://www.vivastudios.com/wp-content/uploads/2025/06/Gladiator_Chica_Pose1.png"
+  },
+  "typography": {
+    "fontFamilySans": "-apple-system, system-ui, sans-serif",
+    "fontFamilyHeading": "-apple-system, system-ui, sans-serif",
+    "headingStyle": "normal"
+  },
+  "theme": {
+    "heroOverlay": "linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(255, 105, 0, 0.55) 50%, rgba(0, 0, 0, 0.35) 100%)",
+    "background": "#0B0124",
+    "text": "#FFFFFF",
+    "footerBackground": "#0B1A33",
+    "footerAccentBorder": "linear-gradient(90deg, #FF6900 0%, #FCB900 50%, #FF6900 100%)",
+    "borderRadius": "0px 0px 20px 20px"
+  },
+  "components": {
+    "header": {
+      "background": "#0B0124",
+      "text": "#FFFFFF",
+      "borderColor": "#334155"
+    },
+    "primaryButton": {
+      "background": "#FFFFFF",
+      "text": "#181818",
+      "borderRadius": "0px 0px 20px 20px"
+    },
+    "hero": {
+      "minHeight": "520px",
+      "overlayOpacity": 1
+    }
+  },
+  "assets": {
+    "heroBackgroundImageUrl": "https://www.vivastudios.com/wp-content/uploads/2025/06/Gladiator_Chica_Pose1.png",
+    "faviconUrl": "https://www.vivastudios.com/wp-content/uploads/2025/06/Viva-Games-Studios-Favicon.svg"
+  },
+  "source": {
+    "url": "https://www.vivastudios.com/",
+    "extractedAt": "2026-05-29T09:34:53.979Z",
+    "method": "playwright"
+  },
+  "landing": {
+    "sections": {
+      "about": true,
+      "customers": false,
+      "technology": false,
+      "coreValues": false,
+      "lifeAt": false,
+      "testimonials": false,
+      "jobAlerts": true
+    },
+    "about": {
+      "heading": "Level up your career with us",
+      "body": "At VIVA Games, we value creativity, curiosity, and collaboration. Join our international team where your voice matters and your growth is part of the mission.\n\nOur hiring process is fast, honest, and straightforward, with the goal of completing it within to ensure a swift experience.",
+      "stats": [],
+      "ctaLabel": "View open positions"
+    },
+    "jobAlerts": {
+      "headingLead": "Let's stay",
+      "headingTrail": "connected",
+      "body": [
+        "Things move pretty fast around here. New tech, new products, new ideas — and new opportunities for talented people like you.",
+        "So, create a tailored job alert, and we'll let you know as soon as your dream role's ready for you."
+      ],
+      "ctaLabel": "Create Job Alert",
+      "imageUrl": "https://www.vivastudios.com/wp-content/uploads/2025/06/Gladiator_Chica_Pose1.png",
+      "background": "#F4F4F5"
+    }
+  },
+  "navLinks": [
+    {
+      "label": "Open Positions",
+      "href": "/jobs"
+    },
+    {
+      "label": "Level up your career with us",
+      "href": "/#about"
+    }
+  ],
+  "footer": {
+    "copyright": "Copyright © {year} Mobile Gaming Company. All Rights Reserved.",
+    "legalLinks": {
+      "legal": "https://www.vivastudios.com/terms-conditions/"
+    },
+    "socialLinks": {}
+  }
+}

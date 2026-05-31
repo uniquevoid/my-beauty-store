@@ -1,0 +1,36 @@
+{
+  "sourceUrl": "https://www.vivastudios.com/",
+  "companyName": "Viva Games Studios",
+  "metaDescription": "Explore open roles and join a creative, global team passionate about mobile gaming.",
+  "logoUrl": "https://www.vivastudios.com/wp-content/uploads/2025/06/Viva-Games-Studios-1.svg",
+  "faviconUrl": "https://www.vivastudios.com/wp-content/uploads/2025/06/Viva-Games-Studios-Favicon.svg",
+  "heroBackgroundImageUrl": "https://www.vivastudios.com/wp-content/uploads/2025/06/Gladiator_Chica_Pose1.png",
+  "heroHeadline": "Careers at Viva Studios",
+  "heroSubheadline": "Join a creative, global team passionate about mobile gaming.",
+  "cssColors": ["#FF6900", "#FCB900", "#0B0124", "#334155", "#FFFFFF", "#181818"],
+  "themeColor": "#FF6900",
+  "body": {
+    "background": "rgb(11, 1, 36)",
+    "color": "rgb(51, 65, 85)",
+    "fontFamily": "-apple-system, system-ui, sans-serif"
+  },
+  "header": {
+    "background": "rgb(11, 1, 36)",
+    "color": "rgb(51, 65, 85)",
+    "borderColor": "rgb(51, 65, 85)"
+  },
+  "footer": {
+    "background": "rgb(11, 26, 51)",
+    "color": "rgb(255, 255, 255)"
+  },
+  "primaryButton": {
+    "background": "rgb(255, 255, 255)",
+    "color": "rgb(24, 24, 24)",
+    "borderRadius": "0px 0px 20px 20px"
+  },
+  "hero": {
+    "backgroundImage": "none",
+    "textTransform": "normal"
+  },
+  "h1Text": "Careers at Viva Studios"
+}

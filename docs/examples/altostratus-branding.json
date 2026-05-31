@@ -1,0 +1,171 @@
+{
+  "companyName": "Altostratus",
+  "logoUrl": "https://static.altostratus.es/2025/12/Logo-Altostratus.svg",
+  "logoAlt": "Altostratus",
+  "metaDescription": "Join Altostratus — Accelerate your digital transformation with personalized cloud, AI, and data solutions.",
+  "colors": {
+    "primary": "#FF0B6F",
+    "primaryForeground": "#FFFFFF",
+    "mutedOnPrimary": "rgba(255, 255, 255, 0.85)",
+    "heroOverlay": "linear-gradient(135deg, rgba(255, 11, 111, 0.88) 0%, rgba(255, 31, 111, 0.65) 50%, rgba(0, 0, 0, 0.25) 100%)",
+    "accent": "#0064FF",
+    "accentForeground": "#FFFFFF",
+    "highlight": "#0064FF",
+    "navLink": "#333333",
+    "background": "#FFFFFF",
+    "text": "#333333",
+    "footerBackground": "#0B1A33",
+    "footerAccentBorder": "linear-gradient(90deg, #FF0B6F 0%, #0064FF 50%, #FF0B6F 100%)",
+    "surface": "#E6FFFF",
+    "surfaceText": "#181818"
+  },
+  "hero": {
+    "badgeText": "We're hiring!",
+    "headline": "Your digital transformation starts here",
+    "subheadline": "Accelerate your digital transformation with personalized cloud, AI, and data solutions. Partners of AWS and Google Cloud.",
+    "backgroundImageUrl": "https://static.altostratus.es/2024/11/Ai-Computing.svg"
+  },
+  "typography": {
+    "fontFamilySans": "-apple-system, system-ui, sans-serif",
+    "fontFamilyHeading": "-apple-system, system-ui, sans-serif",
+    "headingStyle": "normal"
+  },
+  "theme": {
+    "heroOverlay": "linear-gradient(135deg, rgba(255, 11, 111, 0.88) 0%, rgba(255, 31, 111, 0.65) 50%, rgba(0, 0, 0, 0.25) 100%)",
+    "background": "#FFFFFF",
+    "text": "#333333",
+    "footerBackground": "#0B1A33",
+    "footerAccentBorder": "linear-gradient(90deg, #FF0B6F 0%, #0064FF 50%, #FF0B6F 100%)",
+    "borderRadius": "12px"
+  },
+  "components": {
+    "header": {
+      "background": "#FFFFFF",
+      "text": "#333333",
+      "borderColor": "#333333"
+    },
+    "primaryButton": {
+      "background": "#FF0B6F",
+      "text": "#181818",
+      "borderRadius": "12px"
+    },
+    "hero": {
+      "minHeight": "520px",
+      "overlayOpacity": 1
+    }
+  },
+  "assets": {
+    "heroBackgroundImageUrl": "https://static.altostratus.es/2024/11/Ai-Computing.svg",
+    "heroVideoUrl": "https://static.altostratus.es/2025/12/hero-v6-FINAL.mov",
+    "faviconUrl": "https://static.altostratus.es/2025/11/Isotipo-Altostratus.png",
+    "marketingPhotoUrls": [
+      "https://static.altostratus.es/2024/10/download-1.jpg",
+      "https://static.altostratus.es/2024/10/download-2.jpg",
+      "https://static.altostratus.es/2025/02/download-2.jpg",
+      "https://static.altostratus.es/2025/07/trabaja-con-nosotros-cta.webp",
+      "https://static.altostratus.es/2026/01/Ayuntamiento-de-Cordoba-scaled-1-768x512.jpeg",
+      "https://static.altostratus.es/2025/12/imagenes-2-768x432.jpg",
+      "https://static.altostratus.es/2024/10/galaxia-qebv5g0pyyhvdhz0k23wvuf9xtwhvrwj8mf1gwakl4.png",
+      "https://static.altostratus.es/2026/01/cordoba-ayuntamiento.png"
+    ]
+  },
+  "source": {
+    "url": "https://www.altostratus.es/",
+    "extractedAt": "2026-05-29T10:10:07.657Z",
+    "method": "playwright"
+  },
+  "landing": {
+    "sections": {
+      "about": true,
+      "customers": true,
+      "technology": true,
+      "coreValues": false,
+      "lifeAt": true,
+      "testimonials": false,
+      "jobAlerts": true
+    },
+    "about": {
+      "heading": "About us",
+      "body": "We help your organization with tailored cloud solutions.\n\nWe are a professional and managed cloud services consultancy specializing in AWS and Google Cloud technology, part of the Telefónica Tech group.",
+      "stats": [],
+      "ctaLabel": "View open positions"
+    },
+    "customers": {
+      "heading": "Our partners",
+      "logos": [
+        {
+          "name": "aws",
+          "imageUrl": "https://www.altostratus.es/assets/partners/aws.svg"
+        },
+        {
+          "name": "google-cloud",
+          "imageUrl": "https://www.altostratus.es/assets/partners/google-cloud.svg"
+        }
+      ]
+    },
+    "technology": {
+      "heading": "What we do",
+      "body": "We boost productivity with collaborative cloud solutions tailored to your team’s needs.",
+      "imageUrl": "https://static.altostratus.es/2024/10/download-1.jpg",
+      "ctaLabel": "Read more"
+    },
+    "lifeAt": {
+      "heading": "Join our team",
+      "subheading": "Ready to take the next step in your career? Join a team shaping the digital future.",
+      "leftImageUrl": "https://static.altostratus.es/2025/07/trabaja-con-nosotros-cta.webp",
+      "rightImageUrl": "https://static.altostratus.es/2024/10/galaxia-qebv5g0pyyhvdhz0k23wvuf9xtwhvrwj8mf1gwakl4.png",
+      "ctaLabel": "Learn more"
+    },
+    "jobAlerts": {
+      "headingLead": "Let's stay",
+      "headingTrail": "connected",
+      "body": [
+        "Things move pretty fast around here. New tech, new products, new ideas — and new opportunities for talented people like you.",
+        "So, create a tailored job alert, and we'll let you know as soon as your dream role's ready for you."
+      ],
+      "ctaLabel": "Create Job Alert",
+      "imageUrl": "https://static.altostratus.es/2024/10/download-2.jpg",
+      "background": "#E6FFFF"
+    }
+  },
+  "languages": {
+    "default": "en",
+    "options": [
+      {
+        "code": "en",
+        "label": "English"
+      }
+    ]
+  },
+  "navLinks": [
+    {
+      "label": "Open Positions",
+      "href": "/jobs"
+    },
+    {
+      "label": "About us",
+      "href": "/#about"
+    },
+    {
+      "label": "Our partners",
+      "href": "/#customers"
+    },
+    {
+      "label": "What we do",
+      "href": "/#technology"
+    }
+  ],
+  "footer": {
+    "copyright": "Copyright © {year} Altostratus. All Rights Reserved.",
+    "legalLinks": {
+      "privacyNotice": "https://www.altostratus.es/aviso-legal/",
+      "cookieNotice": "https://www.altostratus.es/politica-de-cookies/",
+      "ethics": "https://www.telefonica.com/es/canal-denuncias/"
+    },
+    "socialLinks": {
+      "linkedin": "https://www.linkedin.com/company/altostratus-solucions/",
+      "twitter": "https://twitter.com/AltostratusSL",
+      "instagram": "https://www.instagram.com/altostratus_cloud_consulting/"
+    }
+  }
+}

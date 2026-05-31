@@ -1,0 +1,84 @@
+{
+  "companyName": "Zonaprop",
+  "logoUrl": "https://img10.naventcdn.com/home/RPHOMv4.287.0-RC2/images/logo-r-zonaprop.svg",
+  "logoAlt": "Zonaprop",
+  "metaDescription": "Alquiler, compra y venta de propiedades en Argentina: casas, departamentos, terrenos y otros inmuebles. ¡La propiedad de tus sueños está en Zonaprop!",
+  "colors": {
+    "primary": "#FF5500",
+    "primaryForeground": "#FFFFFF",
+    "heroOverlay": "linear-gradient(135deg, rgba(0, 0, 0, 0.55) 0%, rgba(255, 85, 0, 0.45) 50%, rgba(0, 0, 0, 0.35) 100%)",
+    "accent": "#FF5500",
+    "accentForeground": "#FFFFFF",
+    "highlight": "#FF5500",
+    "navLink": "#000000",
+    "background": "#FFFFFF",
+    "text": "#000000",
+    "footerBackground": "#FAFAFA",
+    "footerAccentBorder": "linear-gradient(90deg, #FF5500 0%, #FF7700 50%, #FF5500 100%)"
+  },
+  "typography": {
+    "fontFamilySans": "Hind, system-ui, sans-serif",
+    "fontFamilyHeading": "Hind, system-ui, sans-serif",
+    "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap",
+    "headingStyle": "normal"
+  },
+  "theme": {
+    "heroOverlay": "linear-gradient(135deg, rgba(0, 0, 0, 0.55) 0%, rgba(255, 85, 0, 0.45) 50%, rgba(0, 0, 0, 0.35) 100%)",
+    "background": "#FFFFFF",
+    "text": "#000000",
+    "footerBackground": "#FAFAFA",
+    "footerAccentBorder": "linear-gradient(90deg, #FF5500 0%, #FF7700 50%, #FF5500 100%)",
+    "borderRadius": "8px"
+  },
+  "components": {
+    "header": {
+      "background": "#FFFFFF",
+      "text": "#000000",
+      "borderColor": "transparent"
+    },
+    "primaryButton": {
+      "background": "#FF5500",
+      "text": "#FFFFFF",
+      "borderRadius": "8px"
+    },
+    "hero": {
+      "minHeight": "520px"
+    }
+  },
+  "assets": {
+    "heroBackgroundImageUrl": "https://img10.naventcdn.com/home/images/Zonaprop/sell/desktop/compra-desktop.jpg",
+    "faviconUrl": "https://img10.naventcdn.com/home/RPHOMv4.287.0-RC2/images/favicon.png"
+  },
+  "source": {
+    "url": "https://www.zonaprop.com.ar/",
+    "extractedAt": "2026-05-28T16:30:00.000Z",
+    "method": "playwright"
+  },
+  "hero": {
+    "badgeText": "¡Estamos contratando!",
+    "headline": "Trabajá con nosotros",
+    "subheadline": "Somos el sitio líder de inmuebles en Argentina. Unite al equipo que conecta millones de personas con su próximo hogar.",
+    "backgroundImageUrl": "https://img10.naventcdn.com/home/images/Zonaprop/sell/desktop/compra-desktop.jpg"
+  },
+  "landing": {
+    "about": {
+      "heading": "El portal inmobiliario líder de Argentina",
+      "body": "Zonaprop reúne a quienes quieren alquilar o comprar con vendedores particulares, inmobiliarias y desarrolladoras. Formá parte de Grupo Navent y ayudanos a transformar el mercado inmobiliario digital.",
+      "stats": [
+        {
+          "value": "+7.5M",
+          "label": "Visitas por mes"
+        },
+        {
+          "value": "+3M",
+          "label": "Usuarios únicos"
+        },
+        {
+          "value": "8+ min",
+          "label": "Permanencia en la página"
+        }
+      ],
+      "ctaLabel": "Ver posiciones abiertas"
+    }
+  }
+}

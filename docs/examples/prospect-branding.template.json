@@ -1,0 +1,102 @@
+{
+  "companyName": "Acme Corp",
+  "logoUrl": "https://example.com/logo.png",
+  "logoAlt": "Acme Corp",
+  "metaDescription": "Explore careers at Acme Corp. Search open roles and apply in minutes.",
+  "colors": {
+    "primary": "#003366",
+    "primaryForeground": "#FFFFFF",
+    "heroOverlay": "linear-gradient(135deg, rgba(0, 51, 102, 0.92) 0%, rgba(0, 80, 160, 0.65) 100%)",
+    "accent": "#FF6600",
+    "accentForeground": "#1A1A1A",
+    "highlight": "#FF6600",
+    "navLink": "#003366",
+    "background": "#FFFFFF",
+    "text": "#2B2B2B",
+    "footerBackground": "#0B1A33",
+    "footerAccentBorder": "linear-gradient(90deg, #003366 0%, #FF6600 50%, #003366 100%)"
+  },
+  "typography": {
+    "fontFamilySans": "Inter, system-ui, sans-serif",
+    "fontFamilyHeading": "Inter, system-ui, sans-serif",
+    "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap",
+    "headingStyle": "normal"
+  },
+  "theme": {
+    "heroOverlay": "linear-gradient(135deg, rgba(0, 51, 102, 0.92) 0%, rgba(0, 80, 160, 0.65) 100%)",
+    "background": "#FFFFFF",
+    "text": "#2B2B2B",
+    "footerBackground": "#0B1A33",
+    "footerAccentBorder": "linear-gradient(90deg, #003366 0%, #FF6600 50%, #003366 100%)",
+    "borderRadius": "9999px"
+  },
+  "components": {
+    "header": {
+      "background": "#FFFFFF",
+      "text": "#003366",
+      "borderColor": "#E5E7EB"
+    },
+    "primaryButton": {
+      "background": "#003366",
+      "text": "#FFFFFF",
+      "borderRadius": "9999px"
+    },
+    "hero": {
+      "minHeight": "520px"
+    }
+  },
+  "assets": {
+    "heroBackgroundImageUrl": "https://example.com/hero.jpg",
+    "faviconUrl": "https://example.com/favicon.png"
+  },
+  "source": {
+    "url": "https://example.com",
+    "extractedAt": "2026-01-01T00:00:00.000Z",
+    "method": "playwright"
+  },
+  "hero": {
+    "badgeText": "We're hiring!",
+    "headline": "Your company headline from the marketing site",
+    "subheadline": "Short value proposition from the company homepage.",
+    "backgroundImageUrl": "https://example.com/hero.jpg"
+  },
+  "navLinks": [
+    { "label": "Open Positions", "href": "/jobs" },
+    { "label": "About Acme", "href": "/#about" }
+  ],
+  "footer": {
+    "copyright": "Copyright © {year} Acme Corp. All Rights Reserved.",
+    "legalLinks": {
+      "privacyNotice": "https://example.com/privacy"
+    },
+    "socialLinks": {
+      "linkedin": "https://linkedin.com/company/acme"
+    }
+  },
+  "languages": {
+    "default": "en",
+    "options": [
+      { "code": "en", "label": "English" },
+      { "code": "es", "label": "Español" }
+    ]
+  },
+  "landing": {
+    "sections": {
+      "about": true,
+      "customers": false,
+      "technology": false,
+      "coreValues": false,
+      "lifeAt": false,
+      "testimonials": false,
+      "jobAlerts": true
+    },
+    "about": {
+      "heading": "About Acme",
+      "body": "Acme is a leader in its industry. Join a team focused on innovation, inclusion, and growth.",
+      "stats": [
+        { "value": "10k+", "label": "Employees worldwide" }
+      ],
+      "ctaLabel": "View open positions"
+    }
+  }
+}

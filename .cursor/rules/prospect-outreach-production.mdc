@@ -1,0 +1,39 @@
+---
+description: After prospect tenant branding updates, sync Render API and Vercel frontend for live demo URLs
+globs: backend/scripts/create-prospect-from-url.ts,backend/scripts/ensure-outreach-production.ts,docs/examples/*-branding.json,docs/ggtechspecs.md
+alwaysApply: false
+---
+
+# Prospect outreach — production sync (automatic)
+
+When you **create or update** a prospect tenant for cold outreach (`create-prospect-from-url`, `--update`, or Supabase branding sync), always run production sync unless the user passed `--skip-production-sync`.
+
+## Required steps (in order)
+
+1. **Supabase** — tenant `branding_json` updated (CLI or MCP).
+2. **Production outreach** — from `backend/`:
+
+```powershell
+npm run ensure-outreach-production -- --slug <slug>
+```
+
+Or rely on the automatic hook at the end of `create-prospect-from-url` (default).
+
+This script:
+
+- Verifies / wakes **Render** `careers-api` at `RENDER_API_URL` (default `https://careers-api.onrender.com`)
+- Sets **Vercel** `VITE_API_URL` to that Render URL via API
+- **Redeploys** the Vercel frontend (env is baked at build time)
+
+## One-time secrets in `backend/.env`
+
+| Variable | Purpose |
+|----------|---------|
+| `RENDER_API_URL` | Public Nest API base URL |
+| `VERCEL_TOKEN` | Vercel account token (required for env + deploy) |
+| `RENDER_DEPLOY_HOOK_URL` | Optional — trigger Render deploy before wake |
+| `VERCEL_DEPLOY_HOOK_URL` | Optional — trigger redeploy without full CLI build |
+
+## Verify before sharing the outreach URL
+
+Open `{APP_PUBLIC_URL}/?tenant={slug}` in incognito — prospect logo, colors, hero, and `/jobs` (10 roles). If the site still calls `localhost:3000`, production sync did not complete.

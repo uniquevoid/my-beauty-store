@@ -1,0 +1,28 @@
+# Render Blueprint — backend API only (frontend deploy to Vercel)
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: careers-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install && npm run build && npm run db:migrate
+    startCommand: npm run start:prod
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: PLATFORM_DOMAIN
+        sync: false
+      - key: PROVISION_API_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false
+      - key: APP_PUBLIC_URL
+        sync: false
+      - key: DEFAULT_TENANT_SLUG
+        value: default

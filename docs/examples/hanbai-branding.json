@@ -1,0 +1,178 @@
+{
+  "companyName": "Talent selection and commercial acceleration",
+  "logoUrl": "https://hanbai.io/files/d7351fa5e55a852bae2e26ced93372d1/186804/x450-450-resize-90-ffffff/logo-web.webp",
+  "logoAlt": "Talent selection and commercial acceleration",
+  "metaDescription": "Join Talent selection and commercial acceleration — Hanbai, a sales accelerator that drives business growth through the selection of commercial talent and Sales & RevOps Boost strategies.",
+  "colors": {
+    "primary": "#959289",
+    "primaryForeground": "#FFFFFF",
+    "mutedOnPrimary": "rgba(255, 255, 255, 0.85)",
+    "heroOverlay": "linear-gradient(135deg, rgba(255, 251, 235, 0.88) 0%, rgba(255, 255, 235, 0.65) 50%, rgba(0, 0, 0, 0.25) 100%)",
+    "accent": "#FECACA",
+    "accentForeground": "#181818",
+    "highlight": "#FECACA",
+    "navLink": "#404040",
+    "background": "#FFFFFF",
+    "text": "#404040",
+    "footerBackground": "#0B1A33",
+    "footerAccentBorder": "linear-gradient(90deg, #FFFBEB 0%, #FECACA 50%, #FFFBEB 100%)",
+    "surface": "#FFFFFF",
+    "surfaceText": "#181818"
+  },
+  "hero": {
+    "badgeText": "We're hiring!",
+    "headline": "We drive sales growth 🚀",
+    "subheadline": "Hanbai, a sales accelerator that drives business growth through the selection of commercial talent and Sales & RevOps Boost strategies.",
+    "backgroundImageUrl": "https://hanbai.io/files/007937bb63719899aa9a6c6adff63575/182514/x700-700-resize-90-ffffff/hanbai-previsualizacion.jpg"
+  },
+  "typography": {
+    "fontFamilySans": "Open Sans, system-ui, sans-serif",
+    "fontFamilyHeading": "Open Sans, system-ui, sans-serif",
+    "headingStyle": "normal"
+  },
+  "theme": {
+    "heroOverlay": "linear-gradient(135deg, rgba(255, 251, 235, 0.88) 0%, rgba(255, 255, 235, 0.65) 50%, rgba(0, 0, 0, 0.25) 100%)",
+    "background": "#FFFFFF",
+    "text": "#404040",
+    "footerBackground": "#0B1A33",
+    "footerAccentBorder": "linear-gradient(90deg, #FFFBEB 0%, #FECACA 50%, #FFFBEB 100%)",
+    "borderRadius": "0px"
+  },
+  "components": {
+    "header": {
+      "background": "#FFFFFF",
+      "text": "#404040",
+      "borderColor": "#404040"
+    },
+    "primaryButton": {
+      "background": "#FFFBEB",
+      "text": "#181818",
+      "borderRadius": "0px"
+    },
+    "hero": {
+      "minHeight": "520px",
+      "overlayOpacity": 1
+    }
+  },
+  "assets": {
+    "heroBackgroundImageUrl": "https://hanbai.io/files/007937bb63719899aa9a6c6adff63575/182514/x700-700-resize-90-ffffff/hanbai-previsualizacion.jpg",
+    "marketingPhotoUrls": []
+  },
+  "source": {
+    "url": "https://hanbai.io/",
+    "extractedAt": "2026-05-29T10:44:52.835Z",
+    "method": "playwright"
+  },
+  "landing": {
+    "sections": {
+      "about": false,
+      "customers": true,
+      "technology": false,
+      "coreValues": false,
+      "lifeAt": false,
+      "testimonials": false,
+      "jobAlerts": true
+    },
+    "about": {
+      "heading": "About us",
+      "body": "Hanbai, a sales accelerator that drives business growth through the selection of commercial talent and Sales & RevOps Boost strategies.",
+      "stats": [],
+      "ctaLabel": "View open positions"
+    },
+    "customers": {
+      "heading": "Our partners",
+      "logos": [
+        {
+          "name": "Hubspot",
+          "imageUrl": "https://hanbai.io/files/ce7ec463d3f19703efd9c3aa68848003/119446/x320-160-resize-90-ffffff/2560px-hubspotlogosvg.webp"
+        },
+        {
+          "name": "Dealhub",
+          "imageUrl": "https://hanbai.io/files/9c1fac9d20a3c23fe01e0691cdbca183/118818/x320-160-resize-90-ffffff/dealhub.webp"
+        },
+        {
+          "name": "Gong",
+          "imageUrl": "https://hanbai.io/files/add788555a8d457fc98f1c7293548416/118817/x320-160-resize-90-ffffff/gong-png.webp"
+        },
+        {
+          "name": "Apollo",
+          "imageUrl": "https://hanbai.io/files/f53639c5211483abe5dc30e2ae7f7b04/117294/x320-160-resize-90-ffffff/logo-apollo-io-preto-1030x254.webp"
+        },
+        {
+          "name": "Aircall",
+          "imageUrl": "https://hanbai.io/files/79f7c527efd47c16e9d58d8b8cd1f192/118816/x320-160-resize-90-ffffff/aircall.webp"
+        },
+        {
+          "name": "Piper",
+          "imageUrl": "https://hanbai.io/files/d04bfe21dd5b9a14249401cff4dcdcdd/154439/x320-160-resize-90-ffffff/piperai.webp"
+        },
+        {
+          "name": "Revenue Squared",
+          "imageUrl": "https://hanbai.io/files/a0c49033d4dee7e910a1381d06f9c4d2/119887/x320-160-resize-90-ffffff/untitled-linkedin-article-cover-image-1.webp"
+        },
+        {
+          "name": "Fleet",
+          "imageUrl": "https://hanbai.io/files/168bc7968033a6733e179f8f5ef8dbfb/121749/x320-160-resize-90-ffffff/fleet-logo-bf3da8e1.webp"
+        },
+        {
+          "name": "Meetzy",
+          "imageUrl": "https://hanbai.io/files/725a714fab435bff9b535a65e14d9a69/121750/x320-160-resize-90-ffffff/meetzy.webp"
+        },
+        {
+          "name": "Remuner",
+          "imageUrl": "https://hanbai.io/files/007e0a57e0330201771432dec84ab79e/121819/x320-160-resize-90-ffffff/remuner-logo.webp"
+        },
+        {
+          "name": "Genesy",
+          "imageUrl": "https://hanbai.io/files/dd536aa4416336135cbcf56488d3db9f/203413/x320-160-resize-90-ffffff/captura-de-pantalla-2026-04-30-a-las-134356.webp"
+        },
+        {
+          "name": "Willbe",
+          "imageUrl": "https://hanbai.io/files/ba13ffb7a0b2243d093f2de9f299dac1/147556/x320-160-resize-90-ffffff/8f688d6d-87b8-4527-b009-1b95b7cc296e.webp"
+        }
+      ]
+    },
+    "jobAlerts": {
+      "headingLead": "Let's stay",
+      "headingTrail": "connected",
+      "body": [
+        "Things move pretty fast around here. New tech, new products, new ideas — and new opportunities for talented people like you.",
+        "So, create a tailored job alert, and we'll let you know as soon as your dream role's ready for you."
+      ],
+      "ctaLabel": "Create Job Alert",
+      "imageUrl": "https://hanbai.io/files/007937bb63719899aa9a6c6adff63575/182514/x700-700-resize-90-ffffff/hanbai-previsualizacion.jpg",
+      "background": "#FFFFFF"
+    }
+  },
+  "languages": {
+    "default": "en",
+    "options": [
+      {
+        "code": "en",
+        "label": "English"
+      }
+    ]
+  },
+  "navLinks": [
+    {
+      "label": "Open Positions",
+      "href": "/jobs"
+    },
+    {
+      "label": "Our partners",
+      "href": "/#customers"
+    }
+  ],
+  "footer": {
+    "copyright": "Copyright © {year} Talent selection and commercial acceleration. All Rights Reserved.",
+    "legalLinks": {
+      "privacyNotice": "https://hanbai.io/privacy-policy/",
+      "legal": "https://hanbai.io/legal-notice/",
+      "cookieNotice": "https://hanbai.io/cookies/"
+    },
+    "socialLinks": {
+      "linkedin": "http://www.linkedin.com/company/hanbai-io",
+      "instagram": "https://www.instagram.com/hanbai.io/"
+    }
+  }
+}
