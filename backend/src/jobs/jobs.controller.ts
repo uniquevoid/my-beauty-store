@@ -23,6 +23,19 @@ export class JobsController {
     return await this.jobs.listDistinctLocations(tenant.id);
   }
 
+  @Get('/jobs/search-suggestions')
+  async listSearchSuggestions(
+    @CurrentTenant() tenant: TenantContext,
+    @Query('q') q?: string,
+    @Query('limit') limit?: string,
+  ) {
+    const parsedLimit = Number.parseInt(limit ?? '', 10);
+    const safeLimit = Number.isFinite(parsedLimit)
+      ? Math.min(Math.max(parsedLimit, 1), 12)
+      : 8;
+    return await this.jobs.listSearchSuggestions(tenant.id, q ?? '', safeLimit);
+  }
+
   @Get('/jobs')
   async listJobs(
     @CurrentTenant() tenant: TenantContext,
