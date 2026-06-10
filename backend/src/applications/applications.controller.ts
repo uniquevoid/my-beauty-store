@@ -12,13 +12,14 @@ export class ApplicationsController {
   @Post('/guest/start')
   async startGuest(
     @CurrentTenant() tenant: TenantContext,
-    @Body() body: { jobSlug?: string; sessionCode?: string },
+    @Body() body: { jobSlug?: string; sessionCode?: string; inviteToken?: string },
   ) {
     if (!body?.jobSlug) throw new BadRequestException('jobSlug is required.');
     return await this.applications.startGuestApplication(
       tenant.id,
       body.jobSlug,
       body.sessionCode,
+      body.inviteToken,
     );
   }
 

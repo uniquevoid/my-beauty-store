@@ -2,6 +2,7 @@ import { BadRequestException, Injectable, NotFoundException } from '@nestjs/comm
 import { type ExtractedResume } from '../ai/ai.service';
 import { validateGuestApplication } from './application-validation';
 import { MailService } from '../mail/mail.service';
+import { PipelineService } from '../pipeline/pipeline.service';
 import { RecommendationsService } from '../recommendations/recommendations.service';
 import { ResumeFileService } from '../resume/resume-file.service';
 import { SupabaseService } from '../supabase/supabase.service';
@@ -16,6 +17,7 @@ export type ApplicationRow = {
   application_code: string;
   job_id: string;
   candidate_id: string | null;
+  screened_candidate_id: string | null;
   applicant_email: string | null;
   resume_storage_path: string | null;
   resume_extracted: ExtractedResume;
@@ -31,9 +33,15 @@ export class ApplicationsService {
     private readonly resumeFile: ResumeFileService,
     private readonly recommendations: RecommendationsService,
     private readonly mail: MailService,
+    private readonly pipeline: PipelineService,
   ) {}
 
-  async startGuestApplication(tenantId: string, jobSlug: string, sessionCode?: string) {
+  async startGuestApplication(
+    tenantId: string,
+    jobSlug: string,
+    sessionCode?: string,
+    inviteToken?: string,
+  ) {
     const { data: job, error: jobError } = await this.supabase.adminClient
       .from('jobs')
       .select('id, slug, status')
@@ -65,6 +73,12 @@ export class ApplicationsService {
 
     const applicationCode = makeApplicationCode();
 
+    let screenedCandidateId: string | null = null;
+    if (inviteToken?.trim()) {
+      const screened = await this.pipeline.findByInviteToken(tenantId, job.id, inviteToken.trim());
+      if (screened) screenedCandidateId = screened.id;
+    }
+
     const { data, error } = await this.supabase.adminClient
       .from('applications')
       .insert({
@@ -72,12 +86,14 @@ export class ApplicationsService {
         application_code: applicationCode,
         job_id: job.id,
         status: 'started',
+        screened_candidate_id: screenedCandidateId,
         ...resumeData,
       })
       .select('*')
       .single();
 
     if (error) throw error;
+
     return data as ApplicationRow;
   }
 
@@ -141,7 +157,7 @@ export class ApplicationsService {
   async submitGuestApplication(applicationCode: string, extracted: ExtractedResume) {
     const { data: existing, error: findErr } = await this.supabase.adminClient
       .from('applications')
-      .select('resume_storage_path')
+      .select('id, tenant_id, resume_storage_path, screened_candidate_id, jobs ( title, slug )')
       .eq('application_code', applicationCode)
       .maybeSingle();
 
@@ -180,6 +196,29 @@ export class ApplicationsService {
       jobTitle: jobTitle ?? 'Open role',
       applicationCode,
     });
+
+    const screenedCandidateId = existing.screened_candidate_id as string | null;
+    if (screenedCandidateId) {
+      await this.pipeline.markApplied(screenedCandidateId, existing.id as string);
+
+      const recruiterEmail = await this.pipeline.resolveRecruiterNotificationEmail(
+        existing.tenant_id as string,
+      );
+      if (recruiterEmail) {
+        const existingJob = existing.jobs as
+          | { title: string; slug: string }
+          | { title: string; slug: string }[]
+          | null;
+        const jobSlug = Array.isArray(existingJob) ? existingJob[0]?.slug : existingJob?.slug;
+        void this.mail.sendRecruiterPresentationReminder({
+          to: recruiterEmail,
+          candidateName: extracted.name ?? undefined,
+          jobTitle: jobTitle ?? 'Open role',
+          screenedCandidateId,
+          jobSlug,
+        });
+      }
+    }
 
     return updated as ApplicationRow;
   }

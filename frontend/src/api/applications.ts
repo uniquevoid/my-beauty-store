@@ -12,10 +12,12 @@ export type StartApplicationResponse = {
 export async function startGuestApplication(
   jobSlug: string,
   sessionCode?: string,
+  inviteToken?: string,
 ): Promise<StartApplicationResponse> {
   const res = await http.post<StartApplicationResponse>('/applications/guest/start', {
     jobSlug,
     ...(sessionCode ? { sessionCode } : {}),
+    ...(inviteToken ? { inviteToken } : {}),
   });
   return res.data;
 }

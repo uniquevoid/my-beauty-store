@@ -37,6 +37,7 @@ export default function ApplyPage() {
   const jobSlug = useMemo(() => params.jobSlug ?? '', [params.jobSlug]);
 
   const sessionCode = searchParams.get('session') ?? undefined;
+  const inviteToken = searchParams.get('invite') ?? undefined;
 
 
 
@@ -118,7 +119,7 @@ export default function ApplyPage() {
 
     setBusy(true);
 
-    startGuestApplication(jobSlug, sessionCode)
+    startGuestApplication(jobSlug, sessionCode, inviteToken)
 
       .then((res) => {
 
@@ -158,7 +159,7 @@ export default function ApplyPage() {
 
     };
 
-  }, [jobSlug, sessionCode]);
+  }, [jobSlug, sessionCode, inviteToken]);
 
 
 
@@ -307,6 +308,12 @@ export default function ApplyPage() {
           Upload your resume to unlock and pre-fill the form. Review everything before submitting.
 
         </p>
+
+        {inviteToken ? (
+          <div className="mt-4 rounded-2xl border border-brand-primary/20 bg-brand-primary/5 p-4 text-sm text-brand-text">
+            You are applying as an invited candidate{job?.title ? ` for ${job.title}` : ''}.
+          </div>
+        ) : null}
 
 
 

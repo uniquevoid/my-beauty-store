@@ -30,6 +30,8 @@ import { InternalModule } from './internal/internal.module';
 
 import { ChatModule } from './chat/chat.module';
 
+import { PipelineModule } from './pipeline/pipeline.module';
+
 
 
 @Module({
@@ -65,6 +67,8 @@ import { ChatModule } from './chat/chat.module';
     JobImportsModule,
 
     InternalModule,
+
+    PipelineModule,
 
   ],
 

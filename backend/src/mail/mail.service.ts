@@ -25,6 +25,23 @@ export type JobAlertMatchEmail = {
   }>;
 };
 
+export type RecruiterPresentationReminderEmail = {
+  to: string;
+  candidateName?: string;
+  jobTitle: string;
+  screenedCandidateId: string;
+  jobSlug?: string;
+};
+
+export type InterviewRequestNotificationEmail = {
+  to: string;
+  candidateName?: string;
+  jobTitle: string;
+  screenedCandidateId: string;
+  introductionCode?: string;
+  clientCompanyName?: string;
+};
+
 @Injectable()
 export class MailService {
   private readonly logger = new Logger(MailService.name);
@@ -132,6 +149,76 @@ export class MailService {
     } catch (error) {
       this.logger.warn(
         `Failed to send welcome email to ${payload.to}: ${error instanceof Error ? error.message : error}`,
+      );
+    }
+  }
+
+  async sendRecruiterPresentationReminder(
+    payload: RecruiterPresentationReminderEmail,
+  ): Promise<void> {
+    try {
+      const adminUrl = `${this.appPublicUrl}/admin/pipeline/${encodeURIComponent(payload.screenedCandidateId)}/presentation`;
+      const candidateLabel = payload.candidateName?.trim() || 'A screened candidate';
+
+      const body = [
+        'Hi,',
+        '',
+        `${candidateLabel} has submitted an application for the ${payload.jobTitle} role.`,
+        '',
+        'Review screening notes and generate the client presentation:',
+        adminUrl,
+        '',
+        'Best regards,',
+        'Careers Team',
+      ].join('\n');
+
+      await this.dispatch({
+        subject: `Finalize candidate presentation — ${payload.jobTitle}`,
+        to: payload.to,
+        body,
+      });
+    } catch (error) {
+      this.logger.warn(
+        `Failed to send recruiter presentation reminder to ${payload.to}: ${error instanceof Error ? error.message : error}`,
+      );
+    }
+  }
+
+  async sendInterviewRequestNotification(
+    payload: InterviewRequestNotificationEmail,
+  ): Promise<void> {
+    try {
+      const adminUrl = `${this.appPublicUrl}/admin/pipeline/${encodeURIComponent(payload.screenedCandidateId)}/presentation`;
+      const candidateLabel = payload.candidateName?.trim() || 'A screened candidate';
+      const introLine = payload.introductionCode
+        ? `Introduction ${payload.introductionCode}`
+        : 'Candidate introduction';
+      const clientLine = payload.clientCompanyName
+        ? ` for ${payload.clientCompanyName}`
+        : '';
+
+      const body = [
+        'Hi,',
+        '',
+        `${clientLine ? `A client${clientLine} has` : 'A client has'} requested an interview for ${candidateLabel} (${payload.jobTitle}).`,
+        '',
+        introLine,
+        '',
+        'Review and unlock the full presentation when ready:',
+        adminUrl,
+        '',
+        'Best regards,',
+        'Careers Team',
+      ].join('\n');
+
+      await this.dispatch({
+        subject: `Interview requested — ${payload.jobTitle}`,
+        to: payload.to,
+        body,
+      });
+    } catch (error) {
+      this.logger.warn(
+        `Failed to send interview request notification to ${payload.to}: ${error instanceof Error ? error.message : error}`,
       );
     }
   }
