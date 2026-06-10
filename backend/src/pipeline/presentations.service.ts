@@ -5,6 +5,7 @@ import { MailService } from '../mail/mail.service';
 import { SupabaseService } from '../supabase/supabase.service';
 import { PipelineService } from './pipeline.service';
 import { formatCandidateDisplayName, makeShareToken } from './pipeline.tokens';
+import { rethrowPipelineDbError } from './supabase-error.util';
 import {
   buildBlindPresentation,
   makeIntroductionCode,
@@ -86,7 +87,7 @@ export class PresentationsService {
         .select('*')
         .single();
 
-      if (error) throw error;
+      if (error) rethrowPipelineDbError(error);
       await this.pipeline.markPresentationDraft(screenedCandidateId);
       return this.normalizePresentationRow(data as CandidatePresentationRow);
     }
@@ -105,7 +106,7 @@ export class PresentationsService {
       .select('*')
       .single();
 
-    if (error) throw error;
+    if (error) rethrowPipelineDbError(error);
     await this.pipeline.markPresentationDraft(screenedCandidateId);
     return this.normalizePresentationRow(data as CandidatePresentationRow);
   }

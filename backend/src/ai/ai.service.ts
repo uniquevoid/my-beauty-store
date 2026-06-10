@@ -10,6 +10,7 @@ import {
   buildFullPresentationFallback,
   type PresentationContent,
 } from './presentation-fallback';
+import { normalizeExtractedLinks } from '../applications/url-normalization';
 import {
   buildBlindPresentation,
   deriveBlindProfile,
@@ -187,13 +188,14 @@ export class AiService {
         ...parsed,
         location: withInferredLocation(parsed, text),
         summary: undefined,
-        links: (parsed.links ?? []).slice(0, 1),
+        links: normalizeExtractedLinks(parsed.links),
       };
     } catch (error) {
       logger.warn(
         `Falling back to local resume parsing (application): ${error instanceof Error ? error.message : error}`,
       );
-      return extractStructuredResumeFallbackForApplication(text);
+      const fallback = extractStructuredResumeFallbackForApplication(text);
+      return { ...fallback, links: normalizeExtractedLinks(fallback.links) };
     }
   }
 
@@ -239,12 +241,14 @@ export class AiService {
       return {
         ...parsed,
         location: withInferredLocation(parsed, text),
+        links: normalizeExtractedLinks(parsed.links),
       };
     } catch (error) {
       logger.warn(
         `Falling back to local resume parsing: ${error instanceof Error ? error.message : error}`,
       );
-      return extractStructuredResumeFallback(text);
+      const fallback = extractStructuredResumeFallback(text);
+      return { ...fallback, links: normalizeExtractedLinks(fallback.links) };
     }
   }
 

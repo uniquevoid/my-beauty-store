@@ -11,6 +11,15 @@ describe('rethrowPipelineDbError', () => {
     ).toThrow(ServiceUnavailableException);
   });
 
+  it('maps missing column errors to ServiceUnavailableException', () => {
+    expect(() =>
+      rethrowPipelineDbError({
+        code: 'PGRST204',
+        message: "Could not find the 'blind_content_json' column of 'candidate_presentations' in the schema cache",
+      }),
+    ).toThrow(ServiceUnavailableException);
+  });
+
   it('rethrows unrelated errors', () => {
     const err = new Error('boom');
     expect(() => rethrowPipelineDbError(err)).toThrow(err);

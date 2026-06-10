@@ -2,10 +2,8 @@ import { Logger } from '@nestjs/common';
 import { GoogleGenerativeAI, type GenerationConfig } from '@google/generative-ai';
 
 export const GEMINI_MODEL_HIERARCHY = [
-  'gemini-3.1-flash',
   'gemini-2.5-flash',
   'gemini-2.5-flash-lite',
-  'gemini-2.5-flash-tts',
 ] as const;
 
 export type GeminiModelName = (typeof GEMINI_MODEL_HIERARCHY)[number];
@@ -25,6 +23,11 @@ export function createGeminiClient(): GoogleGenerativeAI {
 function isRetryableGeminiError(error: unknown): boolean {
   const msg = error instanceof Error ? error.message : String(error);
   return /503|429|high demand|unavailable|timeout/i.test(msg);
+}
+
+function isInvalidModelError(error: unknown): boolean {
+  const msg = error instanceof Error ? error.message : String(error);
+  return /404|not found|not supported for generateContent/i.test(msg);
 }
 
 export type GenerateContentWithFallbackOptions = {
@@ -51,6 +54,7 @@ export async function generateContentWithFallback(
         return (result.response.text() ?? '').trim();
       } catch (error) {
         lastError = error;
+        if (isInvalidModelError(error)) break;
         if (!isRetryableGeminiError(error) || attempt === 2) break;
         await new Promise((r) => setTimeout(r, 400 * (attempt + 1)));
       }
