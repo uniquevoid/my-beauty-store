@@ -15,6 +15,8 @@ import {
   type ScreenedCandidateDetail,
 } from '../api/admin';
 import { getApiErrorMessage } from '../api/errors';
+import { resolveTenantSlug } from '../tenant/resolveTenantSlug';
+import ClientShareLinkWidget from './components/ClientShareLinkWidget';
 
 const EMPTY_CONTENT: PresentationContent = {
   headline: '',
@@ -41,6 +43,12 @@ function textareaToList(value: string) {
     .split('\n')
     .map((line) => line.trim())
     .filter(Boolean);
+}
+
+function buildClientShareUrl(shareToken: string) {
+  const tenant = resolveTenantSlug() ?? 'default';
+  const params = new URLSearchParams({ tenant });
+  return `${window.location.origin}/present/${encodeURIComponent(shareToken)}?${params.toString()}`;
 }
 
 type LinkedApplication = {
@@ -77,6 +85,8 @@ export default function AdminPresentationPage() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
+  const [showBlindPreview, setShowBlindPreview] = useState(false);
+  const [showPublishConfirm, setShowPublishConfirm] = useState(false);
 
   const job = useMemo(() => unwrapSingle(detail?.jobs), [detail]);
   const application = useMemo(() => unwrapSingle(detail?.applications), [detail]);
@@ -99,9 +109,7 @@ export default function AdminPresentationPage() {
         setCandidateDisplayName(existingPresentation.candidate_display_name ?? '');
         setProtectionEnabled(existingPresentation.protection_enabled ?? true);
         if (existingPresentation.status === 'published') {
-          setShareUrl(
-            `${window.location.origin}/present/${encodeURIComponent(existingPresentation.share_token)}`,
-          );
+          setShareUrl(buildClientShareUrl(existingPresentation.share_token));
           try {
             const events = await adminGetPresentationAuditEvents(existingPresentation.id);
             setAuditEvents(events);
@@ -178,11 +186,22 @@ export default function AdminPresentationPage() {
     }
   }
 
-  async function onPublish() {
+  async function publishPresentation(force = false) {
     if (!presentation) return;
+    if (
+      !force &&
+      protectionEnabled &&
+      presentation.redaction_flags &&
+      presentation.redaction_flags.length > 0
+    ) {
+      setShowPublishConfirm(true);
+      return;
+    }
+
     setBusy(true);
     setError(null);
     setMessage(null);
+    setShowPublishConfirm(false);
     try {
       await adminUpdatePresentation(presentation.id, {
         content,
@@ -191,8 +210,7 @@ export default function AdminPresentationPage() {
       });
       const published = await adminPublishPresentation(presentation.id);
       setPresentation(published);
-      const url = `${window.location.origin}/present/${encodeURIComponent(published.share_token)}`;
-      setShareUrl(url);
+      setShareUrl(buildClientShareUrl(published.share_token));
       setMessage('Presentation published.');
       await load();
     } catch (err) {
@@ -200,6 +218,10 @@ export default function AdminPresentationPage() {
     } finally {
       setBusy(false);
     }
+  }
+
+  async function onPublish() {
+    await publishPresentation(false);
   }
 
   async function copyShareUrl() {
@@ -210,7 +232,9 @@ export default function AdminPresentationPage() {
 
   function openPreview() {
     if (!presentation?.share_token) return;
-    const url = `${window.location.origin}/present/${encodeURIComponent(presentation.share_token)}?preview=1`;
+    const tenant = resolveTenantSlug() ?? 'default';
+    const params = new URLSearchParams({ preview: '1', tenant });
+    const url = `${window.location.origin}/present/${encodeURIComponent(presentation.share_token)}?${params.toString()}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   }
 
@@ -265,6 +289,7 @@ export default function AdminPresentationPage() {
 
   const canGenerate = !getGenerateGateReason(application);
   const generateGateReason = getGenerateGateReason(application);
+  const blindContent = presentation?.blind_content_json ?? null;
 
   const screenedCode = detail.id.slice(0, 8).toUpperCase();
 
@@ -373,6 +398,38 @@ export default function AdminPresentationPage() {
                 />
                 Enable candidate protection (blind profile, terms gate, progressive disclosure)
               </label>
+              <p className="text-xs text-slate-500">
+                You edit the full profile here. Clients see the anonymized version until unlock.
+              </p>
+
+              {blindContent && protectionEnabled && (
+                <div className="rounded-md border border-slate-200 bg-slate-50">
+                  <button
+                    type="button"
+                    onClick={() => setShowBlindPreview((value) => !value)}
+                    className="flex w-full items-center justify-between px-3 py-2 text-left text-sm font-medium text-slate-800"
+                  >
+                    Client blind preview
+                    <span className="text-xs font-normal text-slate-500">
+                      {showBlindPreview ? 'Hide' : 'Show'}
+                    </span>
+                  </button>
+                  {showBlindPreview && (
+                    <div className="space-y-2 border-t border-slate-200 px-3 py-3 text-sm text-slate-700">
+                      <p className="font-medium">{blindContent.headline}</p>
+                      {blindContent.executiveSummary && (
+                        <p className="text-slate-600">{blindContent.executiveSummary}</p>
+                      )}
+                      {blindContent.experienceSnapshot && (
+                        <p className="text-slate-600">{blindContent.experienceSnapshot}</p>
+                      )}
+                      <p className="text-xs text-slate-500">
+                        Open Preview in a new tab for the full client layout.
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
 
               {presentation.redaction_flags && presentation.redaction_flags.length > 0 && (
                 <div className="rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">
@@ -455,126 +512,63 @@ export default function AdminPresentationPage() {
               </div>
 
               {shareUrl && presentation?.status === 'published' && (
-                <div className="space-y-4 rounded-md border border-emerald-200 bg-emerald-50 p-3 text-sm">
-                  <div>
-                    <p className="font-medium text-emerald-900">Client share link</p>
-                    <p className="mt-1 break-all text-emerald-800">{shareUrl}</p>
-                    <p className="mt-2 text-xs text-emerald-800/80">
-                      Send this link to your client. Use Preview for internal review — preview visits
-                      are not tracked.
-                    </p>
-                  </div>
-
-                  <div className="flex flex-wrap gap-2">
-                    <button
-                      type="button"
-                      onClick={copyShareUrl}
-                      className="rounded-md border border-emerald-300 bg-white px-3 py-1.5 text-emerald-900"
-                    >
-                      Copy client link
-                    </button>
-                    <button
-                      type="button"
-                      onClick={openPreview}
-                      className="rounded-md border border-emerald-300 bg-white px-3 py-1.5 text-emerald-900"
-                    >
-                      Preview
-                    </button>
-                    <button
-                      type="button"
-                      disabled={busy}
-                      onClick={onResetEngagement}
-                      className="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-slate-700 disabled:opacity-60"
-                    >
-                      Reset engagement
-                    </button>
-                  </div>
-
-                  <div className="flex flex-wrap gap-2">
-                    <EngagementBadge
-                      active={Boolean(presentation.client_viewed_at)}
-                      activeLabel="Link opened"
-                      inactiveLabel="Not opened yet"
-                    />
-                    <EngagementBadge
-                      active={Boolean(presentation.client_exported_at)}
-                      activeLabel="PDF exported"
-                      inactiveLabel="Not exported yet"
-                    />
-                    {presentation.protection_enabled && (
-                      <>
-                        <EngagementBadge
-                          active={Boolean(presentation.terms_accepted_at)}
-                          activeLabel="Terms accepted"
-                          inactiveLabel="Terms pending"
-                        />
-                        <EngagementBadge
-                          active={Boolean(presentation.interview_requested_at)}
-                          activeLabel="Interview requested"
-                          inactiveLabel="No interview request"
-                        />
-                        <EngagementBadge
-                          active={presentation.disclosure_stage === 'full_unlocked'}
-                          activeLabel="Full profile unlocked"
-                          inactiveLabel="Blind profile only"
-                        />
-                      </>
-                    )}
-                  </div>
-
-                  {presentation.protection_enabled &&
-                    presentation.interview_requested_at &&
-                    presentation.disclosure_stage !== 'full_unlocked' && (
-                      <button
-                        type="button"
-                        disabled={busy}
-                        onClick={onUnlockFull}
-                        className="rounded-md bg-brand-primary px-4 py-2 text-sm font-medium text-white hover:opacity-90 disabled:opacity-60"
-                      >
-                        Unlock full presentation
-                      </button>
-                    )}
-
-                  {auditEvents.length > 0 && (
-                    <div className="rounded-md border border-slate-200 bg-white p-3">
-                      <p className="font-medium text-slate-900">Audit trail</p>
-                      <ul className="mt-2 max-h-40 space-y-1 overflow-y-auto text-xs text-slate-600">
-                        {auditEvents.map((event) => (
-                          <li key={event.id}>
-                            {new Date(event.created_at).toLocaleString()} —{' '}
-                            {event.event_type.replace(/_/g, ' ')}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
+                <ClientShareLinkWidget
+                  shareUrl={shareUrl}
+                  presentation={presentation}
+                  auditEvents={auditEvents}
+                  busy={busy}
+                  onCopy={copyShareUrl}
+                  onPreview={openPreview}
+                  onResetEngagement={onResetEngagement}
+                  onUnlockFull={onUnlockFull}
+                />
               )}
             </div>
           )}
         </section>
       </div>
-    </div>
-  );
-}
 
-function EngagementBadge({
-  active,
-  activeLabel,
-  inactiveLabel,
-}: {
-  active: boolean;
-  activeLabel: string;
-  inactiveLabel: string;
-}) {
-  return (
-    <span
-      className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${
-        active ? 'bg-emerald-700 text-white' : 'bg-slate-200 text-slate-600'
-      }`}
-    >
-      {active ? activeLabel : inactiveLabel}
-    </span>
+      {showPublishConfirm && presentation?.redaction_flags?.length ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
+          <div
+            role="dialog"
+            aria-labelledby="publish-confirm-title"
+            className="w-full max-w-md rounded-lg border border-amber-200 bg-white p-6 shadow-lg"
+          >
+            <h3 id="publish-confirm-title" className="text-lg font-semibold text-slate-900">
+              Possible PII in blind view
+            </h3>
+            <p className="mt-2 text-sm text-slate-600">
+              The client-facing blind version may still contain sensitive details. Review the blind
+              preview before publishing.
+            </p>
+            <ul className="mt-3 list-disc pl-5 text-sm text-amber-900">
+              {presentation.redaction_flags.map((flag) => (
+                <li key={flag}>{flag}</li>
+              ))}
+            </ul>
+            <div className="mt-5 flex flex-wrap justify-end gap-2">
+              <button
+                type="button"
+                disabled={busy}
+                onClick={() => setShowPublishConfirm(false)}
+                className="rounded-md border border-slate-300 px-4 py-2 text-sm hover:bg-slate-50 disabled:opacity-60"
+              >
+                Review blind preview
+              </button>
+              <button
+                type="button"
+                disabled={busy}
+                onClick={() => void publishPresentation(true)}
+                className="rounded-md bg-emerald-700 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-800 disabled:opacity-60"
+              >
+                Publish anyway
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+    </div>
   );
 }
 
