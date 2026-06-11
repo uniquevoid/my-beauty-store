@@ -4,6 +4,7 @@ import { clearAdminToken, isAdminLoggedIn } from '../auth/adminSession';
 const nav = [
   { to: '/admin', label: 'Dashboard', end: true },
   { to: '/admin/jobs', label: 'Jobs' },
+  { to: '/admin/pipeline', label: 'Pipeline' },
   { to: '/admin/import', label: 'CSV Import' },
 ];
 

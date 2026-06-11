@@ -1,6 +1,7 @@
 import type { EducationEntry, ExtractedResume, WorkExperienceEntry } from '../types/resume';
 
 import type { ApplicationValidationResult } from '../lib/application-validation';
+import { normalizeOptionalUrl } from '../lib/url-utils';
 
 
 
@@ -315,6 +316,20 @@ export default function ApplicationForm({
               const url = e.target.value.trim();
 
               updateField('links', url ? [url] : []);
+
+            }}
+
+            onBlur={() => {
+
+              if (!portfolioUrl) return;
+
+              const normalized = normalizeOptionalUrl(portfolioUrl);
+
+              if (normalized && normalized !== portfolioUrl) {
+
+                updateField('links', [normalized]);
+
+              }
 
             }}
 

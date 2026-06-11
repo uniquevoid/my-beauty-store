@@ -1,0 +1,39 @@
+---
+description: Start the local dev stack before asking the user to verify UI on localhost:5173
+alwaysApply: true
+---
+
+# Local UI verification — start the app first
+
+Whenever you ask the user to **verify UI** in the browser at `http://localhost:5173` (or any path under it), you **must start the local stack yourself first**. Do not hand off manual verification steps until the app is running.
+
+## Required workflow
+
+1. **Check if already running** — inspect the terminals folder for active `npm run dev` (frontend) and `npm run start:dev` (backend on port 3001).
+2. **Start if needed** — from repo root, run:
+   ```powershell
+   .\Start-Local-Dev.ps1
+   ```
+   Or start manually in background:
+   - Backend: `cd backend; $env:PORT='3001'; npm run start:dev`
+   - Frontend: `cd frontend; npm run dev`
+3. **Wait for readiness** — confirm frontend responds at `http://localhost:5173` and backend at `http://localhost:3001` before asking the user to open a URL.
+4. **Then share verify steps** — include the exact URL (with `?tenant=default` or the relevant tenant slug) only after the stack is up.
+
+## Defaults
+
+| Service | URL |
+|---------|-----|
+| Frontend | http://localhost:5173 |
+| Backend API | http://localhost:3001 |
+| Admin login | http://localhost:5173/admin/login?tenant=default |
+
+## Do not
+
+- Ask the user to "start the dev server" or "run npm run dev" as a verification prerequisite — you start it.
+- Link to `localhost:5173` in a handoff without confirming the stack is running (or having just started it).
+
+## Exceptions
+
+- User explicitly says the app is already running, or they only want instructions without you starting servers.
+- Verification is for a **deployed/production** URL (not localhost).

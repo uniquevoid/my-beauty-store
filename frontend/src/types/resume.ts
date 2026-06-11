@@ -15,6 +15,8 @@ export type WorkExperienceEntry = {
   highlights?: string[] | null;
 };
 
+import { normalizeExtractedLinks } from '../lib/url-utils';
+
 export type ExtractedResume = {
   name?: string | null;
   email?: string | null;
@@ -51,6 +53,6 @@ export function normalizeExtractedResume(raw: Partial<ExtractedResume> | null | 
     skills: Array.isArray(raw?.skills) ? raw!.skills! : [],
     education: Array.isArray(raw?.education) ? raw!.education! : [],
     work_experience: Array.isArray(raw?.work_experience) ? raw!.work_experience! : [],
-    links: Array.isArray(raw?.links) ? raw!.links! : [],
+    links: normalizeExtractedLinks(Array.isArray(raw?.links) ? raw!.links! : []),
   };
 }

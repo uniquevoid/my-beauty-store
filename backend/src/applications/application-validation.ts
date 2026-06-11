@@ -1,4 +1,5 @@
 import type { ExtractedResume } from '../ai/extracted-resume.types';
+import { isValidHttpUrl } from './url-normalization';
 
 export type ApplicationValidationResult = {
   valid: boolean;
@@ -7,15 +8,6 @@ export type ApplicationValidationResult = {
 
 function hasText(value: string | null | undefined): boolean {
   return Boolean(value?.trim());
-}
-
-function isValidUrl(value: string): boolean {
-  try {
-    const url = new URL(value);
-    return url.protocol === 'http:' || url.protocol === 'https:';
-  } catch {
-    return false;
-  }
 }
 
 export function validateGuestApplication(
@@ -58,7 +50,7 @@ export function validateGuestApplication(
   if (links.length > 1) {
     errors.push('Only one portfolio or website URL is allowed.');
   }
-  if (links.length === 1 && links[0]?.trim() && !isValidUrl(links[0].trim())) {
+  if (links.length === 1 && links[0]?.trim() && !isValidHttpUrl(links[0].trim())) {
     errors.push('Portfolio or website must be a valid URL.');
   }
 

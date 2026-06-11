@@ -32,6 +32,13 @@ export type JobDetail = Job & {
   related_jobs: JobSummary[];
 };
 
+export type JobSearchSuggestion = {
+  slug: string;
+  title: string;
+  department: string | null;
+  location: string | null;
+};
+
 export type ListJobsParams = {
   q?: string;
   location?: string;
@@ -45,6 +52,13 @@ export async function listJobs(params?: ListJobsParams) {
 
 export async function listJobLocations() {
   const res = await http.get<string[]>('/jobs/locations');
+  return res.data;
+}
+
+export async function listJobSearchSuggestions(q: string, limit = 8) {
+  const res = await http.get<JobSearchSuggestion[]>('/jobs/search-suggestions', {
+    params: { q, limit },
+  });
   return res.data;
 }
 

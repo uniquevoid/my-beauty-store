@@ -1,4 +1,5 @@
 import type { ExtractedResume } from '../types/resume';
+import { isValidHttpUrl } from './url-utils';
 
 export type ApplicationValidationResult = {
   valid: boolean;
@@ -8,15 +9,6 @@ export type ApplicationValidationResult = {
 
 function hasText(value: string | null | undefined): boolean {
   return Boolean(value?.trim());
-}
-
-function isValidUrl(value: string): boolean {
-  try {
-    const url = new URL(value);
-    return url.protocol === 'http:' || url.protocol === 'https:';
-  } catch {
-    return false;
-  }
 }
 
 export function validateApplication(
@@ -64,7 +56,7 @@ export function validateApplication(
   }
 
   const link = (extracted.links ?? [])[0]?.trim() ?? '';
-  if (link && !isValidUrl(link)) {
+  if (link && !isValidHttpUrl(link)) {
     errors.push('Portfolio or website must be a valid URL.');
     fieldErrors.links = 'Enter a valid URL (https://…).';
   }

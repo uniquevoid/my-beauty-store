@@ -5,8 +5,20 @@ import { createGeminiClient, generateContentWithFallback, generateJsonWithFallba
 import { withInferredLocation } from './location-extract';
 import { extractStructuredResumeFallback, extractStructuredResumeFallbackForApplication } from './resume-fallback';
 import type { ExtractedResume } from './extracted-resume.types';
+import {
+  buildBlindPresentationFallback,
+  buildFullPresentationFallback,
+  type PresentationContent,
+} from './presentation-fallback';
+import { normalizeExtractedLinks } from '../applications/url-normalization';
+import {
+  buildBlindPresentation,
+  deriveBlindProfile,
+  scanRedactionFlags,
+} from '../pipeline/presentation-redaction';
 
 export type { ExtractedResume } from './extracted-resume.types';
+export type { PresentationContent } from './presentation-fallback';
 
 export type ChatHistoryMessage = {
   role: 'user' | 'assistant';
@@ -176,13 +188,14 @@ export class AiService {
         ...parsed,
         location: withInferredLocation(parsed, text),
         summary: undefined,
-        links: (parsed.links ?? []).slice(0, 1),
+        links: normalizeExtractedLinks(parsed.links),
       };
     } catch (error) {
       logger.warn(
         `Falling back to local resume parsing (application): ${error instanceof Error ? error.message : error}`,
       );
-      return extractStructuredResumeFallbackForApplication(text);
+      const fallback = extractStructuredResumeFallbackForApplication(text);
+      return { ...fallback, links: normalizeExtractedLinks(fallback.links) };
     }
   }
 
@@ -228,12 +241,153 @@ export class AiService {
       return {
         ...parsed,
         location: withInferredLocation(parsed, text),
+        links: normalizeExtractedLinks(parsed.links),
       };
     } catch (error) {
       logger.warn(
         `Falling back to local resume parsing: ${error instanceof Error ? error.message : error}`,
       );
-      return extractStructuredResumeFallback(text);
+      const fallback = extractStructuredResumeFallback(text);
+      return { ...fallback, links: normalizeExtractedLinks(fallback.links) };
     }
+  }
+
+  async generateCandidatePresentation(input: {
+    resume: ExtractedResume;
+    jobTitle: string;
+    jobDescription: string;
+    screeningNotes: string;
+    clientName?: string;
+  }): Promise<{
+    fullContent: PresentationContent;
+    blindContent: PresentationContent;
+    redactionFlags: string[];
+  }> {
+    const candidateSummary = {
+      name: input.resume.name ?? null,
+      skills: input.resume.skills ?? [],
+      summary: input.resume.summary ?? null,
+      work_experience: (input.resume.work_experience ?? []).slice(0, 6),
+      education: (input.resume.education ?? []).slice(0, 3),
+    };
+
+    const blindProfile = deriveBlindProfile(input.resume, input.screeningNotes);
+
+    const prompt = [
+      'Write TWO client-facing candidate presentations for a recruiting agency: one FULL version and one BLIND (anonymized) version.',
+      'Use a professional, concise tone suitable for a hiring manager.',
+      'Do NOT invent facts not supported by the resume or screening notes.',
+      'Paraphrase screening notes into polished highlights — never quote raw call notes verbatim.',
+      '',
+      'FULL version rules:',
+      '- May include candidate first name and real employer/university names.',
+      '- Never include email, phone, LinkedIn, GitHub, or street addresses.',
+      '',
+      'BLIND version rules:',
+      '- Never include candidate name, email, phone, LinkedIn, GitHub, or addresses.',
+      '- Replace employer names with generic descriptors (e.g. "a Fortune 100 technology company").',
+      '- Replace university names with generic descriptors (e.g. "a top-ranked UK university").',
+      '- Use "the candidate" instead of personal names.',
+      '',
+      'Return ONLY valid JSON matching this schema:',
+      '{',
+      '  "full": {',
+      '    "headline": string,',
+      '    "executiveSummary": string,',
+      '    "keyStrengths": string[],',
+      '    "roleFit": string[],',
+      '    "screeningHighlights": string[],',
+      '    "experienceSnapshot": string,',
+      '    "skills": string[],',
+      '    "recruiterRecommendation": string',
+      '  },',
+      '  "blind": { same schema as full but anonymized }',
+      '}',
+      '',
+      input.clientName ? `CLIENT COMPANY: ${input.clientName}` : '',
+      `JOB TITLE: ${input.jobTitle}`,
+      'JOB DESCRIPTION:',
+      input.jobDescription.slice(0, 4000) || '(not provided)',
+      '',
+      'SCREENING NOTES:',
+      input.screeningNotes.slice(0, 8000) || '(none provided)',
+      '',
+      'RESUME DATA:',
+      JSON.stringify(candidateSummary),
+    ]
+      .filter(Boolean)
+      .join('\n');
+
+    try {
+      const raw = await generateJsonWithFallback(prompt, { logger });
+      let parsed: { full?: PresentationContent; blind?: PresentationContent };
+      try {
+        parsed = JSON.parse(raw) as { full?: PresentationContent; blind?: PresentationContent };
+      } catch {
+        const firstBrace = raw.indexOf('{');
+        const lastBrace = raw.lastIndexOf('}');
+        if (firstBrace >= 0 && lastBrace > firstBrace) {
+          parsed = JSON.parse(raw.slice(firstBrace, lastBrace + 1)) as {
+            full?: PresentationContent;
+            blind?: PresentationContent;
+          };
+        } else {
+          throw new Error('Gemini did not return valid JSON for presentation.');
+        }
+      }
+
+      const fullContent = this.normalizePresentationContent(
+        parsed.full,
+        input.jobTitle,
+        blindProfile,
+      );
+      const blindContent = this.normalizePresentationContent(
+        parsed.blind ?? buildBlindPresentation(fullContent),
+        input.jobTitle,
+        blindProfile,
+      );
+      const redactionFlags = scanRedactionFlags(blindContent);
+
+      return { fullContent, blindContent, redactionFlags };
+    } catch (error) {
+      logger.warn(
+        `Falling back to template presentation: ${error instanceof Error ? error.message : error}`,
+      );
+      const fullContent = buildFullPresentationFallback({
+        resume: input.resume,
+        jobTitle: input.jobTitle,
+        screeningNotes: input.screeningNotes,
+      });
+      const blindContent = buildBlindPresentationFallback({
+        resume: input.resume,
+        jobTitle: input.jobTitle,
+        screeningNotes: input.screeningNotes,
+      });
+      return {
+        fullContent,
+        blindContent,
+        redactionFlags: scanRedactionFlags(blindContent),
+      };
+    }
+  }
+
+  private normalizePresentationContent(
+    parsed: PresentationContent | undefined,
+    jobTitle: string,
+    blindProfile: ReturnType<typeof deriveBlindProfile>,
+  ): PresentationContent {
+    return {
+      headline: parsed?.headline?.trim() || `${jobTitle} — Recommended Candidate`,
+      executiveSummary: parsed?.executiveSummary?.trim() || '',
+      keyStrengths: Array.isArray(parsed?.keyStrengths) ? parsed!.keyStrengths.filter(Boolean) : [],
+      roleFit: Array.isArray(parsed?.roleFit) ? parsed!.roleFit.filter(Boolean) : [],
+      screeningHighlights: Array.isArray(parsed?.screeningHighlights)
+        ? parsed!.screeningHighlights.filter(Boolean)
+        : [],
+      experienceSnapshot: parsed?.experienceSnapshot?.trim() || '',
+      skills: Array.isArray(parsed?.skills) ? parsed!.skills.filter(Boolean).slice(0, 12) : [],
+      recruiterRecommendation: parsed?.recruiterRecommendation?.trim() || '',
+      blindProfile,
+    };
   }
 }

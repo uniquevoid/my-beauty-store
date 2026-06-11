@@ -1,6 +1,10 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { JobAlertNotifierService } from '../job-alerts/job-alert-notifier.service';
 import { SupabaseService } from '../supabase/supabase.service';
+import {
+  rankJobSearchSuggestions,
+  type JobSearchSuggestion,
+} from './job-search-suggestions';
 import { pickRelatedJobs, type RelatedJobSummary } from './jobs-related';
 
 export type JobStatus = 'draft' | 'published' | 'closed';
@@ -115,6 +119,38 @@ export class JobsService {
     }
 
     return Array.from(unique).sort((a, b) => a.localeCompare(b));
+  }
+
+  async listSearchSuggestions(
+    tenantId: string,
+    q: string,
+    limit = 8,
+  ): Promise<JobSearchSuggestion[]> {
+    const query = q?.trim();
+    if (!query || query.length < 2) return [];
+
+    const pattern = `%${escapeIlike(query)}%`;
+    const { data, error } = await this.supabase.adminClient
+      .from('jobs')
+      .select('slug, title, department, location')
+      .eq('tenant_id', tenantId)
+      .eq('status', 'published')
+      .or(`title.ilike.${pattern},department.ilike.${pattern}`)
+      .order('title', { ascending: true })
+      .limit(50);
+
+    if (error) throw error;
+
+    return rankJobSearchSuggestions(
+      query,
+      (data ?? []) as Array<{
+        slug: string;
+        title: string;
+        department: string | null;
+        location: string | null;
+      }>,
+      limit,
+    );
   }
 
   async listDistinctLocations(tenantId: string): Promise<string[]> {

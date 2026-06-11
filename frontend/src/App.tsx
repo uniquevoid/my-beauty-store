@@ -21,7 +21,11 @@ import AdminChangePasswordPage from './admin/AdminChangePasswordPage';
 import AdminDashboardPage from './admin/AdminDashboardPage';
 import AdminJobsPage from './admin/AdminJobsPage';
 import AdminImportPage from './admin/AdminImportPage';
+import AdminPipelinePage from './admin/AdminPipelinePage';
+import AdminScreenedCandidatePage from './admin/AdminScreenedCandidatePage';
+import AdminPresentationPage from './admin/AdminPresentationPage';
 import DemoBuilderPage from './pages/DemoBuilderPage';
+import PresentationPage from './pages/PresentationPage';
 import CareerChatWidget from './components/chat/CareerChatWidget';
 
 const demoBuilderEnabled = import.meta.env.VITE_ENABLE_DEMO_BUILDER === 'true';
@@ -53,7 +57,12 @@ export default function App() {
               <Route index element={<AdminDashboardPage />} />
               <Route path="jobs" element={<AdminJobsPage />} />
               <Route path="import" element={<AdminImportPage />} />
+              <Route path="pipeline" element={<AdminPipelinePage />} />
+              <Route path="pipeline/new" element={<AdminScreenedCandidatePage />} />
+              <Route path="pipeline/:id/presentation" element={<AdminPresentationPage />} />
             </Route>
+
+            <Route path="/present/:shareToken" element={<PresentationPage />} />
 
             <Route path="/" element={withCareersShell(<HomePage />)} />
             <Route path="/recommendations" element={withCareersShell(<RecommendationsPage />)} />

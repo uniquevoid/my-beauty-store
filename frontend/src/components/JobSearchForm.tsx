@@ -1,5 +1,8 @@
 import { useEffect, useId, useState } from 'react';
 
+import type { JobSearchSuggestion } from '../api/jobs';
+import JobSearchAutocomplete from './JobSearchAutocomplete';
+
 
 
 export type JobSearchValues = {
@@ -116,20 +119,22 @@ export default function JobSearchForm({
 
 
 
-  function handleSubmit(e: React.FormEvent) {
-
-    e.preventDefault();
-
+  function submitValues(nextKeyword = keyword) {
     onSubmit({
-
-      q: keyword.trim(),
-
+      q: nextKeyword.trim(),
       location: location.trim(),
-
       areaOfInterest: areaOfInterest.trim(),
-
     });
+  }
 
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    submitValues();
+  }
+
+  function handleSuggestionSelect(suggestion: JobSearchSuggestion) {
+    setKeyword(suggestion.title);
+    submitValues(suggestion.title);
   }
 
 
@@ -158,25 +163,16 @@ export default function JobSearchForm({
 
           </label>
 
-          <input
-
-            id={keywordId}
-
-            name="q"
-
-            type="search"
-
-            value={keyword}
-
-            onChange={(e) => setKeyword(e.target.value)}
-
-            placeholder="Search by title"
-
-            autoComplete="off"
-
-            className={`mt-1.5 ${inputClass}`}
-
-          />
+          <div className="mt-1.5">
+            <JobSearchAutocomplete
+              id={keywordId}
+              value={keyword}
+              variant={variant}
+              inputClassName={inputClass}
+              onChange={setKeyword}
+              onSuggestionSelect={handleSuggestionSelect}
+            />
+          </div>
 
         </div>
 

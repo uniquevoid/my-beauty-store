@@ -22,6 +22,7 @@
     "create-prospect": "ts-node scripts/provision-tenant.ts",
     "create-prospect-from-url": "ts-node scripts/create-prospect-from-url.ts",
     "demo-from-website": "ts-node scripts/demo-from-website.ts",
+    "qa-verify-job-search": "ts-node scripts/qa-verify-job-search.ts",
     "ensure-outreach-production": "ts-node scripts/ensure-outreach-production.ts",
     "seed-demo-jobs": "ts-node scripts/seed-demo-jobs.ts",
     "seed-demo-candidate": "ts-node scripts/seed-demo-candidate.ts",
